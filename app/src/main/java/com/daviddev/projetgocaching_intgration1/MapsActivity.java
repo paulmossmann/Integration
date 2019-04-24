@@ -1,12 +1,14 @@
 package com.daviddev.projetgocaching_intgration1;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,11 +22,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Coordinates coordinates;
     String geocacheMarkerText;
     Intent intent;
+    Button find_map_button;
+  //  public static Activity fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+      //  fa = this;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -35,10 +41,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         String geocacheId = intent.getStringExtra("geocacheId");
 
+        find_map_button = findViewById(R.id.find_map_button);
+        find_map_button.setOnClickListener(this);
+
         //Récupération des informations sur les géocaches
         //Plusieurs requettes temps? :
-       // coords = dataBaseManager.getGeocacheCoords(geocacheId);
-        //geocacheMarkerText = dataBaseManager.getGeocacheMarkerText(geocacheId);
+
+               /** coords = dataBaseManager.getGeocacheCoords(geocacheId);
+                geocacheMarkerText = dataBaseManager.getGeocacheMarkerText(geocacheId);**/
     }
 
     /**
@@ -53,7 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(coordinates.latitude, coordinates.longitude);
+      //  LatLng geocachePoint = new LatLng(coordinates.latitude, coordinates.longitude);
 
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
@@ -62,7 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Ajout du point GPS sur la carte
-        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(geocacheMarkerText));
+      //  googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(geocacheMarkerText));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -71,18 +81,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }, 1);
         }
 
-        //Demande d'accés à la permission de localisation GPS
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-            }, 1);
-        }
-
         //Activé la localisation du smartphone
         googleMap.setMyLocationEnabled(true);
 
         //Centrer la carte sur le point GPS crée et régler le zoom
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
+    //    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
     }
 
     @Override
