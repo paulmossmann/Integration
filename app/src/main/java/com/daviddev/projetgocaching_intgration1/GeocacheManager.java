@@ -29,7 +29,7 @@ public class GeocacheManager {
     public static void writeGeocacheId(Tag tag){
         writeNdefMessage(tag, "");
 
-
+/*test*/
 
 
     }
