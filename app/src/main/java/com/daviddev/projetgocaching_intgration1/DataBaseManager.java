@@ -60,7 +60,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
         return ArrayList;
 
-        
+
     }
 
     public static ArrayList<String> getCoordX(Context context, int IDGeocache){
@@ -84,14 +84,42 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
     }
 
-    public static Coordinates getCoordinates(int id){
+    public static Coordinates getCoordinates(Context context, int IDGeocache){
 
+        DataBaseManager dbHelper = new DataBaseManager(context);
+        ArrayList<String> ArrayList = new ArrayList<String>();
+        String name="";
+        String selectQuery = "SELECT "+COORD_X+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                name = c.getString(c.getColumnIndex(COORD_X));
+                ArrayList.add(name);
+            } while (c.moveToNext());
+            Log.d("array", ArrayList.toString());
+        }
+        String a = ArrayList.get(0);
 
-        //......
+        DataBaseManager dbHelper2 = new DataBaseManager(context);
+        ArrayList<String> ArrayList2 = new ArrayList<String>();
+        String name2="";
+        String selectQuery2 = "SELECT "+COORD_Y+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        SQLiteDatabase db2 = dbHelper2.getReadableDatabase();
+        Cursor c2 = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (c2.moveToFirst()) {
+            do {
+                name2 = c.getString(c2.getColumnIndex(COORD_X));
+                ArrayList2.add(name2);
+            } while (c2.moveToNext());
+            Log.d("array", ArrayList2.toString());
+        }
+        String b = ArrayList2.get(0);
 
-
-        double latitude = 47.49057; //<--Mettre les coords récupéres dans la database ici
-        double longitude = -0.502718;//<-- et ici
+        double latitude = Double.parseDouble(a); //<--Mettre les coords récupéres dans la database ici
+        double longitude = Double.parseDouble(b);//<-- et ici
         Coordinates coords = new Coordinates(latitude, longitude);
 
         return coords;
