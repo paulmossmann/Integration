@@ -13,30 +13,7 @@ import android.widget.Toast;
 
 public class ScanActivity extends Activity implements View.OnClickListener {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    String test = "test";
     RelativeLayout lay;
 
     @Override
