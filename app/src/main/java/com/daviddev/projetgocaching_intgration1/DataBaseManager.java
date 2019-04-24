@@ -44,7 +44,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         onUpgrade(db, oldVersion, newVersion);
     }
 
-
     public static ArrayList<String> getGeocacheID(SQLiteDatabase db, int IDGeocache){
         ArrayList<String> ArrayList = new ArrayList<String>();
         String name="";
@@ -59,8 +58,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             Log.d("array", ArrayList.toString());
         }
         return ArrayList;
-
-
     }
 
     public static ArrayList<String> getCoordX(Context context, int IDGeocache){
@@ -78,7 +75,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             } while (c.moveToNext());
             Log.d("array", ArrayList.toString());
         }
-
 
         return ArrayList;
 
@@ -111,7 +107,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         // looping through all rows and adding to list
         if (c2.moveToFirst()) {
             do {
-                name2 = c.getString(c2.getColumnIndex(COORD_X));
+                name2 = c.getString(c2.getColumnIndex(COORD_Y));
                 ArrayList2.add(name2);
             } while (c2.moveToNext());
             Log.d("array", ArrayList2.toString());
