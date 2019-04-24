@@ -2,22 +2,19 @@ package com.daviddev.projetgocaching_intgration1;
 
 public class Coordinates {
 
-    long latitude;
-    long longitude;
+    double latitude;
+    double longitude;
 
-    public Coordinates( long p_latitude, long p_longitude){
+    public Coordinates(double p_latitude,double p_longitude){
         latitude = p_latitude;
         longitude = p_longitude;
-
-
-
     }
 
-    long getLatitude(){
+    double getLatitude(){
         return latitude;
     }
 
-    long getlongitude(){
+    double getlongitude(){
         return longitude;
     }
 

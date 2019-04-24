@@ -7,7 +7,6 @@ import android.provider.BaseColumns;
 import android.util.Log;
 import java.util.ArrayList;
 
-
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
@@ -32,7 +31,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db){
 
         db.execSQL(SQL_CREATE_ENTRIES);
     }
@@ -79,8 +78,23 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             } while (c.moveToNext());
             Log.d("array", ArrayList.toString());
         }
+
+
         return ArrayList;
 
+    }
+
+    public static Coordinates getCoordinates(int id){
+
+
+        //......
+
+
+        double latitude = 47.49057; //<--Mettre les coords récupéres dans la database ici
+        double longitude = -0.502718;//<-- et ici
+        Coordinates coords = new Coordinates(latitude, longitude);
+
+        return coords;
     }
 
     public void getCoordY(){
