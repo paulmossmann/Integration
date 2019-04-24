@@ -44,11 +44,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
 
-        //Récupération des informations sur les géocaches
-        //Plusieurs requettes temps? :
-
-               /** coords = dataBaseManager.getGeocacheCoords(geocacheId);
-                geocacheMarkerText = dataBaseManager.getGeocacheMarkerText(geocacheId);**/
+        coordinates = DataBaseManager.getCoordinates(5);
+        //geocacheMarkerText = DataBaseManager.getGeocacheMarkerText(geocacheId);
     }
 
     /**
@@ -63,7 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-      //  LatLng geocachePoint = new LatLng(coordinates.latitude, coordinates.longitude);
+        LatLng geocachePoint = new LatLng(coordinates.latitude, coordinates.longitude);
 
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
