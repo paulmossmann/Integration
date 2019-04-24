@@ -94,9 +94,8 @@ public class GeocacheManager {
 
     private static void writeNdefMessage(Tag tag, String writeText) {
 
-        //Check if the tag object is null
+        //Vérification
         if (tag == null) {
-            //Toast.makeText(this, "Tag object cannot be null.", Toast.LENGTH_SHORT).show();
             return;
         }
 

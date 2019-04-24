@@ -8,6 +8,9 @@ public class Coordinates {
     public Coordinates( long p_latitude, long p_longitude){
         latitude = p_latitude;
         longitude = p_longitude;
+
+
+
     }
 
     long getLatitude(){

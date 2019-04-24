@@ -13,13 +13,11 @@ import android.widget.Toast;
 
 public class ScanActivity extends Activity implements View.OnClickListener {
 
-    RelativeLayout lay;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
-
+        RelativeLayout lay;
         lay = findViewById(R.id.lay);
         lay.setOnClickListener(this);
 
@@ -29,7 +27,6 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
 
-        GeocacheManager.enableCatchingNfcIntents(this);
     }
 
     @Override
@@ -44,8 +41,11 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 
             intent = new Intent(this, MapsActivity.class);
             intent.putExtra("geocacheId", geocacheId);
-            startActivity(intent);
 
+           // MapsActivity.fa.finish();
+            startActivity(intent);
+            this.finish();
+            return;
         }
     }
 
