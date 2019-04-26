@@ -2,8 +2,8 @@ package com.daviddev.projetgocaching_intgration1;
 
 public class Coordinates {
 
-    double latitude;
-    double longitude;
+    private double latitude;
+    private double longitude;
 
     public Coordinates(double p_latitude,double p_longitude){
         latitude = p_latitude;

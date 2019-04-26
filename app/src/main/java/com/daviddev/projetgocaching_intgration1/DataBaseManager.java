@@ -82,6 +82,9 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
     public static Coordinates getCoordinates(Context context, int IDGeocache){
 
+
+
+
         DataBaseManager dbHelper = new DataBaseManager(context);
         ArrayList<String> ArrayList = new ArrayList<String>();
         String name="";
@@ -97,6 +100,9 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             Log.d("array", ArrayList.toString());
         }
         String a = ArrayList.get(0);
+
+
+
 
         DataBaseManager dbHelper2 = new DataBaseManager(context);
         ArrayList<String> ArrayList2 = new ArrayList<String>();

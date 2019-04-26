@@ -30,7 +30,7 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
 
-        GeocacheManager.enableCatchingNfcIntents(this);
+
     }
 
     @Override
@@ -68,5 +68,6 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         super.onResume();
         // enableCatchingNfcIntents function must be called in onResume methode.
         GeocacheManager.enableCatchingNfcIntents(this);
+
     }
 }

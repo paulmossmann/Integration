@@ -33,8 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
       //  fa = this;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         //Création d'une intention pour récupérer les données passés par l'activité précédente.
@@ -44,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
 
-        coordinates = DataBaseManager.getCoordinates(5);
+        coordinates = DataBaseManager.getCoordinates(this, 3);
         //geocacheMarkerText = DataBaseManager.getGeocacheMarkerText(geocacheId);
     }
 
@@ -58,9 +57,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
+    //!Asynchrome
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(coordinates.latitude, coordinates.longitude);
+        LatLng geocachePoint = new LatLng(coordinates.getLatitude(), coordinates.getlongitude());
 
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
