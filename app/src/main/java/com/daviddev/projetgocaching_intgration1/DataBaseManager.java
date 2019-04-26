@@ -80,6 +80,8 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
     }
 
+
+
     public static Coordinates getCoordinates(Context context, int IDGeocache){
 
         DataBaseManager dbHelper = new DataBaseManager(context);
@@ -117,7 +119,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         double latitude = Double.parseDouble(a); //<--Mettre les coords récupéres dans la database ici
         double longitude = Double.parseDouble(b);//<-- et ici
         Coordinates coords = new Coordinates(latitude, longitude);
-
         return coords;
     }
 
