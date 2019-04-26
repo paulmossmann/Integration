@@ -8,6 +8,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
+
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "salscaching.db";
@@ -15,7 +16,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String KEY_ID = "GeocacheID";
     public static final String COORD_X = "CoordX";
     public static final String COORD_Y = "COORDY";
-
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_GEOCACHE + "("
