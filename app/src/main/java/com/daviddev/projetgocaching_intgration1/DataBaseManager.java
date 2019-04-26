@@ -104,8 +104,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         String a = ArrayList.get(0);
 
 
-
-
         DataBaseManager dbHelper2 = new DataBaseManager(context);
         ArrayList<String> ArrayList2 = new ArrayList<String>();
         String name2="";
@@ -123,7 +121,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         String b = ArrayList2.get(0);
 
         double latitude = Double.parseDouble(a); //<--Mettre les coords récupéres dans la database ici
-        double longitude = Double.parseDouble(b);//<-- et ici
+        double longitude = Double.parseDouble(a);//<-- et ici
         Coordinates coords = new Coordinates(latitude, longitude);
         return coords;
     }
