@@ -69,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Ajout du point GPS sur la carte
-      //  googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(geocacheMarkerText));
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title("mettre le marker text O_O !"));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -82,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMyLocationEnabled(true);
 
         //Centrer la carte sur le point GPS crée et régler le zoom
-    //    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
     }
 
     @Override

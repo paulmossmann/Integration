@@ -10,7 +10,7 @@ public class Geocache {
     String Indice_1;
     String Indice_2;
 
-    public Geocache(String p_question, String p_reponse, String p_prop_1, String p_prop_2, String p_prop_3, String p_indice_1, String p_indice_2){
+   /* public Coordinates(String p_question, String p_reponse, String p_prop_1, String p_prop_2, String p_prop_3, String p_indice_1, String p_indice_2){
         Question = p_question;
         Reponse = p_reponse;
         Prop_1 = p_prop_1;
@@ -18,7 +18,7 @@ public class Geocache {
         Prop_3 = p_prop_3;
         Indice_1 = p_indice_1;
         Indice_2 = p_indice_2;
-    }
+    }*/
 
     String getquestion(){
         return Question;

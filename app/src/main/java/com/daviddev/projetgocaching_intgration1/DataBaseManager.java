@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "/storage/sdcard0/DCIM/salscaching.db";
+    public static final String DATABASE_NAME = "salscaching.db";
     public static final String TABLE_NAME_GEOCACHE = "geocache";
     public static final String KEY_ID = "GeocacheID";
     public static final String COORD_X = "CoordX";
@@ -104,7 +104,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         String a = ArrayList.get(0);
 
 
-        /*DataBaseManager dbHelper2 = new DataBaseManager(context);
+        DataBaseManager dbHelper2 = new DataBaseManager(context);
         ArrayList<String> ArrayList2 = new ArrayList<String>();
         String name2="";
         String selectQuery2 = "SELECT "+COORD_Y+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
@@ -118,11 +118,10 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             } while (c2.moveToNext());
             Log.d("array", ArrayList2.toString());
         }
-        String b = ArrayList2.get(0);*/
+        String b = ArrayList2.get(0);
 
         double latitude = Double.parseDouble(a); //<--Mettre les coords récupéres dans la database ici
-        //double longitude = Double.parseDouble(a);//<-- et ici
-        double longitude = -0.5100;
+        double longitude = Double.parseDouble(a);//<-- et ici
         Coordinates coords = new Coordinates(latitude, longitude);
         return coords;
     }
