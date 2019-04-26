@@ -163,6 +163,7 @@ public class GeocacheManager {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
 
         // FLAG_RECEIVER_REPLACE_PENDING allow the MainActivity to stay in the foreground
+
         Intent intent = new Intent(context, ScanActivity.class).addFlags(Intent.FLAG_RECEIVER_REPLACE_PENDING);
         // Argument one for enableForegroundDIspatch
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
