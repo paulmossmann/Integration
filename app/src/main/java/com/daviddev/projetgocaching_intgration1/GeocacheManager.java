@@ -23,7 +23,7 @@ public class GeocacheManager {
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         String payload = readNdefMessage(tag);
         return payload;
-
+ 
     }
 
     public static void writeGeocacheId(Tag tag){
