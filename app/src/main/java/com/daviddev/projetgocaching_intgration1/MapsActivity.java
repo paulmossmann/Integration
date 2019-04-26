@@ -20,10 +20,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener{
 
     Coordinates coordinates;
-    String geocacheMarkerText;
+    String geocacheTitle;
     Intent intent;
     Button find_map_button;
-  //  public static Activity fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
 
-        coordinates = DataBaseManager.getCoordinates(this, 3);
-        //geocacheMarkerText = DataBaseManager.getGeocacheMarkerText(geocacheId);
+        coordinates = DataBaseManager.getCoordinates(this, Integer.parseInt(geocacheId));
+        geocacheTitle = DataBaseManager.getTitle(this, Integer.parseInt(geocacheId));
     }
 
     /**
@@ -69,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Ajout du point GPS sur la carte
-        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title("mettre le marker text O_O !"));
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(geocacheTitle));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){

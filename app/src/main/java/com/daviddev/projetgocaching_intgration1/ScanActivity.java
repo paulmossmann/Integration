@@ -30,7 +30,6 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * 0.9), (int) (height * 0.9));
 
-
     }
 
     @Override
