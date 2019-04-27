@@ -18,8 +18,8 @@ public class Geocache {
         setAnswerNbr(idGeocache) ;
         setProposals(idGeocache);
         setClues(idGeocache);*/
-        setCoordinates(idGeocache) ;
-        setTitle(idGeocache) ;
+        setCoordinates(idGeocache);
+        setTitle(idGeocache);
     }
 
     //Accésseurs (J'utilise seulement les accésseurs)

@@ -39,11 +39,11 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         if (intent.hasExtra(NfcAdapter.EXTRA_TAG)) {
 
             String geocacheId = GeocacheManager.readGeocacheId(intent);
+            DataHolder.currentGéocache = new Geocache(Integer.parseInt(geocacheId));
 
             Toast.makeText(this, "id: " + geocacheId, Toast.LENGTH_SHORT).show();
 
             intent = new Intent(this, MapsActivity.class);
-            intent.putExtra("geocacheId", geocacheId);
             startActivity(intent);
 
         }

@@ -42,8 +42,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         db = dbHelper.getReadableDatabase();
     }
 
-
-
     public void onCreate(SQLiteDatabase db){
 
         db.execSQL(SQL_CREATE_ENTRIES);
