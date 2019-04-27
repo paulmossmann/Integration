@@ -42,8 +42,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
 
-        coordinates = DataBaseManager.getCoordinates(this, Integer.parseInt(geocacheId));
-        geocacheTitle = DataBaseManager.getTitle(this, Integer.parseInt(geocacheId));
+        coordinates = DataBaseManager.getCoordinates(Integer.parseInt(geocacheId));
+        geocacheTitle = DataBaseManager.getTitle(Integer.parseInt(geocacheId));
     }
 
     /**

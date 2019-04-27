@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/F84E-1690/Android/data/com.daviddev.projetgocaching_intgration1/bdd50.db";
+    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/bdd51.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -19,6 +19,10 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String COORD_X = "CoordX";
     public static final String COORD_Y = "CoordY";
     public static final String TITLE = "Title";
+
+    //Sont crée lors du démarage de l'application dans StartActivity
+    static DataBaseManager dbHelper;
+    static SQLiteDatabase db;
 
     private static final String SQL_CREATE_ENTRIES =
                     "CREATE TABLE IF NOT EXISTS "
@@ -31,8 +35,14 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
             "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public DataBaseManager(Context context) {
+
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        dbHelper = this;
+        db = dbHelper.getReadableDatabase();
     }
+
+
 
     public void onCreate(SQLiteDatabase db){
 
@@ -48,10 +58,9 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public static Coordinates getCoordinates(Context context, int IDGeocache){
 
-        DataBaseManager dbHelper = new DataBaseManager(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+    public static Coordinates getCoordinates(int IDGeocache){
 
         String selectQuery;
         Cursor cursor;
@@ -75,10 +84,8 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return coords;
     }
 
-    public static String getTitle(Context context, int IDGeocache){
+    public static String getTitle(int IDGeocache){
 
-        DataBaseManager dbHelper = new DataBaseManager(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
         String selectQuery;
         Cursor cursor;
         String title = "";

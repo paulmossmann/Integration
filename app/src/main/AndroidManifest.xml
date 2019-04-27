@@ -40,11 +40,17 @@
         android:name=".ScanActivity"
         android:label="@string/title_activity_maps"
             android:theme="@style/Theme.TransparentPopup">
+    </activity>
+
+
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-    </activity>
+        </activity>
     </application>
 
 </manifest>

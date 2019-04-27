@@ -2,49 +2,83 @@ package com.daviddev.projetgocaching_intgration1;
 
 public class Geocache {
 
-    String Question;
-    String Reponse;
-    String Prop_1;
-    String Prop_2;
-    String Prop_3;
-    String Indice_1;
-    String Indice_2;
+    String question;
 
-   /* public Coordinates(String p_question, String p_reponse, String p_prop_1, String p_prop_2, String p_prop_3, String p_indice_1, String p_indice_2){
-        Question = p_question;
-        Reponse = p_reponse;
-        Prop_1 = p_prop_1;
-        Prop_2 = p_prop_2;
-        Prop_3 = p_prop_3;
-        Indice_1 = p_indice_1;
-        Indice_2 = p_indice_2;
-    }*/
+    int answerNbr; //On ne récupére pas la réponse mais son indice dans le tableau de proposition.
+    String[] proposals;
+    String[] clues;
 
-    String getquestion(){
-        return Question;
+    Coordinates coordinates;
+    String title;
+
+    //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
+
+    public Geocache(int idGeocache /*L'id donné via la classe parcous*/) {
+     /*   setQuestion(idGeocache);
+        setAnswerNbr(idGeocache) ;
+        setProposals(idGeocache);
+        setClues(idGeocache);*/
+        setCoordinates(idGeocache) ;
+        setTitle(idGeocache) ;
     }
 
-    String getreponse(){
-        return Reponse;
+    //Accésseurs (J'utilise seulement les accésseurs)
+
+    public String getQuestion() {
+        return question;
     }
 
-    String getprop1(){
-        return Prop_1;
+    public int getAnswerNbr() {
+        return answerNbr;
     }
 
-    String getprop2(){
-        return Prop_2;
+    public String[] getProposals() {
+        return proposals;
     }
 
-    String getprop3(){
-        return Prop_3;
+    public String[] getClues() {
+        return clues;
     }
 
-    String getindice1(){
-        return Indice_1;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    String getindice2(){
-        return Indice_2;
+    public String getTitle() {
+        return title;
+    }
+
+    //Modifieurs (Tu dois coder tes méthodes de databaseManager pour récupérer les données)
+    /*
+     VVV Les méthode tout en bas sont fonctionelles, il faut repartir
+     de leurs modéle pour coder le reste dans DataBaseManager
+    */
+/*
+    public void setQuestion(int idGeocache) {
+        //La base de donnée retourne un String avec la questions
+        this.question = DataBaseManager.getQuestion(idGeocache);
+    }
+
+    public void setAnswerNbr(int idGeocache) {
+        //La base de donnée retourne un int avec le numéro de la réposne dans le tableau de proposition
+        this.answerNbr = DataBaseManager.getAnswerNbr(idGeocache);
+    }
+
+    public void setProposals(int idGeocache) {
+        //La base de donnée retourne un tableau de String avec les propositions
+        this.proposals = DataBaseManager.getProposuals(idGeocache);
+    }
+
+    public void setClues(int idGeocache) {
+        this.clues = DataBaseManager.getClues(idGeocache);
+    }
+*/
+    public void setCoordinates(int idGeocache) {
+        //Faire une modification pour avoir les coords du PROCHAIN géocache.
+        this.coordinates = DataBaseManager.getCoordinates(idGeocache);
+    }
+
+    public void setTitle(int idGeocache) {
+        this.title = DataBaseManager.getTitle(idGeocache);
     }
 }
