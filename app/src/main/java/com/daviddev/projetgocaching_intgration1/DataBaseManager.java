@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/mnt/sdcard/DCIM/bdd/salscaching.db";
+    public static final String DATABASE_NAME = "/storage/F84E-1690/Android/data/com.daviddev.projetgocaching_intgration1/bdd50.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -19,7 +19,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String COORD_X = "CoordX";
     public static final String COORD_Y = "CoordY";
     public static final String TITLE = "Title";
-    static String selectQuery;
 
     private static final String SQL_CREATE_ENTRIES =
                     "CREATE TABLE IF NOT EXISTS "
@@ -53,6 +52,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
         DataBaseManager dbHelper = new DataBaseManager(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
         String selectQuery;
         Cursor cursor;
         double latitude = 0, longitude = 0;
