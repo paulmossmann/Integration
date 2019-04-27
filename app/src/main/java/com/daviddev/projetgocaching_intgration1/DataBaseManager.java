@@ -58,8 +58,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         onUpgrade(db, oldVersion, newVersion);
     }
 
-
-
     public static Coordinates getCoordinates(int IDGeocache){
 
         String selectQuery;
