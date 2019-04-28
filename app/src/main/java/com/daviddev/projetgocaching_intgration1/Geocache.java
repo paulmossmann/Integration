@@ -13,8 +13,8 @@ public class Geocache {
 
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
 
-    public Geocache(int idGeocache /*L'id donné via la classe parcours*/) {
-     /*   setQuestion(idGeocache);
+    public Geocache(int idGeocache /*L'id donnée via la classe parcours*/) {
+     /* setQuestion(idGeocache);
         setAnswerNbr(idGeocache) ;
         setProposals(idGeocache);
         setClues(idGeocache);*/
