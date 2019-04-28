@@ -26,7 +26,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String LATITUDE = "Latitude";
     public static final String TITLE = "Title";
 
-
     //Sont crées lors du démarrage de l'application dans StartActivity
     static DataBaseManager dbHelper;
     static SQLiteDatabase db;
