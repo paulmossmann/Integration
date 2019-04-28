@@ -47,14 +47,17 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-       /* switch (view.getId()){
+     /*   switch (view.getId()){
 
             case R.id.choice_1:
                 if (choice_1.getText() == Geocache.getAnswer()) {
                     Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT);
-
+                    intent = new Intent(this, MapsActivity.class);
+                    startActivity(intent);
+                    this.finish();
                 }
                 break;
+
 
 
         }*/
