@@ -50,8 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //!Asynchrome
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(DataHolder.currentGéocache.getCoordinates().getLatitude(), DataHolder.currentGéocache.getCoordinates().getlongitude());
-
+        LatLng geocachePoint = new LatLng(Geocache.getLatitude(), Geocache.getLongitude());
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
 
@@ -59,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Ajout du point GPS sur la carte
-        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(DataHolder.currentGéocache.getTitle()));
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(Geocache.getTitle()));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){

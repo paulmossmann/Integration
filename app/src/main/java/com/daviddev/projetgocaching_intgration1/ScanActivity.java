@@ -39,10 +39,9 @@ public class ScanActivity extends Activity implements View.OnClickListener {
         if (intent.hasExtra(NfcAdapter.EXTRA_TAG)) {
 
             String geocacheId = GeocacheManager.readGeocacheId(intent);
+            Geocache.setAllTable(Integer.parseInt(geocacheId));
 
-            Geocache.setAllTable(geocacheId);
-
-            intent = new Intent(this, MapsActivity.class);
+            intent = new Intent(this, QuestionActivity.class);
             startActivity(intent);
             this.finish();
 
