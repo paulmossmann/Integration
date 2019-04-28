@@ -5,16 +5,16 @@ import android.widget.Toast;
 
 public class Geocache {
 
-    public static String question;
-    public static String answer;
-    public static String choice_1;
-    public static String choice_2;
-    public static String choice_3;
-    public static String clue_1;
-    public static String clue_2;
-    public static String longitude;
-    public static String latitude;
-    public static String title;
+    private static String question;
+    private static String answer;
+    private static String choice_1;
+    private static String choice_2;
+    private static String choice_3;
+    private static String clue_1;
+    private static String clue_2;
+    private static String longitude;
+    private static String latitude;
+    private static String title;
 
     int answerNbr; //On ne récupére pas la réponse mais son indice dans le tableau de proposition.
     public String[] proposals;
@@ -61,12 +61,9 @@ public class Geocache {
         return Double.parseDouble(latitude);
     }
 
-
     public static String getTitle() {
         return title;
     }
-
-
 
     public static void setQuestion() {
         question = AllTable[0];
