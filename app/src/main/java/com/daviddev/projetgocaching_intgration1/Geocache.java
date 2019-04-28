@@ -163,5 +163,7 @@ public class Geocache {
 
     public static void setAllTable(int idGeocache) {
         AllTable = DataBaseManager.getAllTable(idGeocache);
+        setQuestion();
+
     }
 }
