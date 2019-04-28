@@ -19,8 +19,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener{
 
-    Coordinates coordinates;
-    String geocacheTitle;
     Intent intent;
     Button find_map_button;
 
@@ -37,9 +35,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
-
-        coordinates = DataHolder.currentGéocache.getCoordinates();
-        geocacheTitle = DataHolder.currentGéocache.getTitle();
     }
 
     /**
@@ -55,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //!Asynchrome
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(coordinates.getLatitude(), coordinates.getlongitude());
+        LatLng geocachePoint = new LatLng(DataHolder.currentGéocache.getCoordinates().getLatitude(), DataHolder.currentGéocache.getCoordinates().getlongitude());
 
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
@@ -64,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         //Ajout du point GPS sur la carte
-        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(geocacheTitle));
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(DataHolder.currentGéocache.getTitle()));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
