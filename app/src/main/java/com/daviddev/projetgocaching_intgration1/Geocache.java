@@ -41,31 +41,31 @@ public class Geocache {
 
     //Accésseurs (J'utilise seulement les accésseurs)
 
-    public String getQuestion() {
+    public static String getQuestion() {
         return question;
     }
 
-    public String getAnswer() {
+    public static String getAnswer() {
         return answer;
     }
 
-    public String getChoice_1() {
+    public static String getChoice_1() {
         return choice_1;
     }
 
-    public String getChoice_2() {
+    public static String getChoice_2() {
         return choice_2;
     }
 
-    public String getChoice_3() {
+    public static String getChoice_3() {
         return choice_3;
     }
 
-    public String getClue_1() {
+    public static String getClue_1() {
         return clue_1;
     }
 
-    public String getClue_2() {
+    public static String getClue_2() {
         return clue_2;
     }
 
