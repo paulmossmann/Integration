@@ -4,23 +4,28 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.util.Log;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/bdd51.db";
+    public static final String DATABASE_NAME = "/sdcard/Android/data/com.daviddev.projetgocaching_intgration1/salscaching.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
+    public static final String TABLE_NAME_COURSE = "course";
     public static final String KEY_ID = "GeocacheID";
-    public static final String COORD_X = "CoordX";
-    public static final String COORD_Y = "CoordY";
+    public static final String LONGITUDE = "Longitude";
+    public static final String LATITUDE = "Latitude";
     public static final String TITLE = "Title";
+    public static final String QUESTION = "Question";
+    public static final String ANSWER = "Answer";
+    public static final String CHOICE_1 = "Choice_1";
+    public static final String CHOICE_2 = "Choice_2";
+    public static final String CHOICE_3 = "Choice_3";
+    public static final String CLUE_1 = "Clue_1";
+    public static final String CLUE_2 = "Clue_2";
 
-    //Sont crée lors du démarage de l'application dans StartActivity
+
+    //Sont crées lors du démarrage de l'application dans StartActivity
     static DataBaseManager dbHelper;
     static SQLiteDatabase db;
 
@@ -28,8 +33,8 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
                     "CREATE TABLE IF NOT EXISTS "
                     + TABLE_NAME_GEOCACHE + "("
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + COORD_X + "REAL, "
-                    + COORD_Y + "REAL); ";
+                    + LONGITUDE + "REAL, "
+                    + LATITUDE + "REAL); ";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -37,13 +42,11 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public DataBaseManager(Context context) {
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
         dbHelper = this;
         db = dbHelper.getReadableDatabase();
     }
 
     public void onCreate(SQLiteDatabase db){
-
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
@@ -62,18 +65,18 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         Cursor cursor;
         double latitude = 0, longitude = 0;
 
-        selectQuery = "SELECT "+COORD_X+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        selectQuery = "SELECT "+ LONGITUDE +" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-                latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(COORD_X)));
+                latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(LONGITUDE)));
         }
 
-        selectQuery = "SELECT " + COORD_Y +" FROM " + TABLE_NAME_GEOCACHE +" WHERE " + KEY_ID + " = " + IDGeocache+" ";
+        selectQuery = "SELECT " + LATITUDE +" FROM " + TABLE_NAME_GEOCACHE +" WHERE " + KEY_ID + " = " + IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(COORD_Y)));
+            longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(LATITUDE)));
         }
 
         Coordinates coords = new Coordinates(latitude, longitude);
@@ -95,5 +98,119 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
         return title;
     }
+
+    public static String getQuestion(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String question = "";
+
+        selectQuery = "SELECT "+QUESTION+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            question = cursor.getString(cursor.getColumnIndex(QUESTION));
+        }
+
+        return question;
+    }
+
+    public static String getAnswer(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Answer = "";
+
+        selectQuery = "SELECT "+ANSWER+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Answer = cursor.getString(cursor.getColumnIndex(ANSWER));
+        }
+
+        return Answer;
+    }
+
+    public static String getChoice1(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Choice1 = "";
+
+        selectQuery = "SELECT "+CHOICE_1+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Choice1 = cursor.getString(cursor.getColumnIndex(CHOICE_1));
+        }
+
+        return Choice1;
+    }
+
+    public static String getChoice2(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Choice2 = "";
+
+        selectQuery = "SELECT "+CHOICE_2+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Choice2 = cursor.getString(cursor.getColumnIndex(CHOICE_2));
+        }
+
+        return Choice2;
+    }
+
+    public static String getChoice3(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Choice3 = "";
+
+        selectQuery = "SELECT "+CHOICE_3+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Choice3 = cursor.getString(cursor.getColumnIndex(CHOICE_3));
+        }
+
+        return Choice3;
+    }
+
+    public static String getClue1(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Clue1 = "";
+
+        selectQuery = "SELECT "+CLUE_1+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Clue1 = cursor.getString(cursor.getColumnIndex(CLUE_1));
+        }
+
+        return Clue1;
+    }
+
+    public static String getClue2(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Clue2 = "";
+
+        selectQuery = "SELECT "+CLUE_2+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Clue2 = cursor.getString(cursor.getColumnIndex(CLUE_2));
+        }
+
+        return Clue2;
+    }
+
+
 
 }
