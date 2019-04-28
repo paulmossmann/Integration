@@ -76,6 +76,7 @@ public class Geocache {
     public String getTitle() {
         return title;
     }
+
     public String[] getAllTable() {
         return AllTable;
     }
