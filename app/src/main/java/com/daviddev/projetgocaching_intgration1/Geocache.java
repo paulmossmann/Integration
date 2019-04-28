@@ -73,7 +73,7 @@ public class Geocache {
         return Double.parseDouble(longitude);
     }
 
-    public static double getlatitude() {
+    public static double getLatitude() {
         return Double.parseDouble(latitude);
     }
 
