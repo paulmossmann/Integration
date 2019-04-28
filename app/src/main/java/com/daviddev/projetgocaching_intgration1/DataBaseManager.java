@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/bdd51.db";
+    public static final String DATABASE_NAME = "/sdcard/Android/data/com.daviddev.projetgocaching_intgration1/salscaching.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -235,11 +235,11 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         Cursor cursor;
         String Longitude = "";
 
-        selectQuery = "SELECT "+Longitude+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        selectQuery = "SELECT "+LONGITUDE+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            Longitude = cursor.getString(cursor.getColumnIndex(Longitude));
+            Longitude = cursor.getString(cursor.getColumnIndex(LONGITUDE));
         }
 
         return Longitude;
@@ -255,7 +255,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            Latitude = cursor.getString(cursor.getColumnIndex(Latitude));
+            Latitude = cursor.getString(cursor.getColumnIndex(LATITUDE));
         }
 
         return Latitude;
