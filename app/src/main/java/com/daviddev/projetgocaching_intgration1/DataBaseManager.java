@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import java.util.List;
+
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
     public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/bdd51.db";
@@ -13,9 +15,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String TABLE_NAME_GEOCACHE = "geocache";
     public static final String TABLE_NAME_COURSE = "course";
     public static final String KEY_ID = "GeocacheID";
-    public static final String LONGITUDE = "Longitude";
-    public static final String LATITUDE = "Latitude";
-    public static final String TITLE = "Title";
     public static final String QUESTION = "Question";
     public static final String ANSWER = "Answer";
     public static final String CHOICE_1 = "Choice_1";
@@ -23,6 +22,9 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String CHOICE_3 = "Choice_3";
     public static final String CLUE_1 = "Clue_1";
     public static final String CLUE_2 = "Clue_2";
+    public static final String LONGITUDE = "Longitude";
+    public static final String LATITUDE = "Latitude";
+    public static final String TITLE = "Title";
 
 
     //Sont crées lors du démarrage de l'application dans StartActivity
@@ -104,7 +106,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         String selectQuery;
         Cursor cursor;
         String question = "";
-
+        char test[];
         selectQuery = "SELECT "+QUESTION+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
@@ -129,6 +131,22 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
 
         return Answer;
+    }
+
+    public static char getChoices(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Choice1 = "";
+        char table[] = new char[2];
+        selectQuery = "SELECT "+CHOICE_1+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Choice1 = cursor.getString(cursor.getColumnIndex(CHOICE_1));
+        }
+
+        return table[1];
     }
 
     public static String getChoice1(int IDGeocache){
@@ -209,6 +227,53 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
 
         return Clue2;
+    }
+
+    public static String getLongitude(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Longitude = "";
+
+        selectQuery = "SELECT "+Longitude+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Longitude = cursor.getString(cursor.getColumnIndex(Longitude));
+        }
+
+        return Longitude;
+    }
+
+    public static String getLatitude(int IDGeocache){
+
+        String selectQuery;
+        Cursor cursor;
+        String Latitude = "";
+
+        selectQuery = "SELECT "+LATITUDE+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Latitude = cursor.getString(cursor.getColumnIndex(Latitude));
+        }
+
+        return Latitude;
+    }
+
+    public static String[] getAllTable(int IDGeocache){
+        String tab[] = new String[10];
+        tab[0] = getQuestion(IDGeocache);
+        tab[1] = getAnswer(IDGeocache);
+        tab[2] = getChoice1(IDGeocache);
+        tab[3] = getChoice2(IDGeocache);
+        tab[4] = getChoice3(IDGeocache);
+        tab[5] = getClue1(IDGeocache);
+        tab[6] = getClue2(IDGeocache);
+        tab[7] = getLatitude(IDGeocache);
+        tab[8] = getLongitude(IDGeocache);
+        tab[9] = getTitle(IDGeocache);
+        return tab;
     }
 
 

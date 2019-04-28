@@ -7,19 +7,22 @@ public class Geocache {
     int answerNbr; //On ne récupére pas la réponse mais son indice dans le tableau de proposition.
     String[] proposals;
     String[] clues;
+    String[] AllTable;
 
     Coordinates coordinates;
     String title;
 
+
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
 
-    public Geocache(int idGeocache /*L'id donné via la classe parcours*/) {
-     /*   setQuestion(idGeocache);
+    public Geocache(int idGeocache /*L'id donnée via la classe parcours*/) {
+     /* setQuestion(idGeocache);
         setAnswerNbr(idGeocache) ;
         setProposals(idGeocache);
         setClues(idGeocache);*/
         setCoordinates(idGeocache);
         setTitle(idGeocache);
+        setAllTable(idGeocache);
     }
 
     //Accésseurs (J'utilise seulement les accésseurs)
@@ -46,6 +49,9 @@ public class Geocache {
 
     public String getTitle() {
         return title;
+    }
+    public String[] getAllTable() {
+        return AllTable;
     }
 
     //Modifieurs (Tu dois coder tes méthodes de databaseManager pour récupérer les données)
@@ -80,5 +86,9 @@ public class Geocache {
 
     public void setTitle(int idGeocache) {
         this.title = DataBaseManager.getTitle(idGeocache);
+    }
+
+    public void setAllTable(int idGeocache) {
+        this.AllTable = DataBaseManager.getAllTable(idGeocache);
     }
 }
