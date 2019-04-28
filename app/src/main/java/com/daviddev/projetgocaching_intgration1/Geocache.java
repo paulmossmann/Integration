@@ -2,24 +2,23 @@ package com.daviddev.projetgocaching_intgration1;
 
 public class Geocache {
 
-    String question;
-    String answer;
-    String choice_1;
-    String choice_2;
-    String choice_3;
-    String clue_1;
-    String clue_2;
-    String longitude;
-    String latitude;
-    String titile;
+    public static String question;
+    public static String answer;
+    public static String choice_1;
+    public static String choice_2;
+    public static String choice_3;
+    public static String clue_1;
+    public static String clue_2;
+    public static String longitude;
+    public static String latitude;
+    public static String title;
 
     int answerNbr; //On ne récupére pas la réponse mais son indice dans le tableau de proposition.
-    String[] proposals;
-    String[] clues;
-    String[] AllTable;
+    public String[] proposals;
+    public String[] clues;
+    public static String[] AllTable;
 
     Coordinates coordinates;
-    String title;
 
 
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
@@ -151,7 +150,7 @@ public class Geocache {
         this.coordinates = DataBaseManager.getCoordinates(idGeocache);
     }
 
-    public void setAllTable(int idGeocache) {
-        this.AllTable = DataBaseManager.getAllTable(idGeocache);
+    public static void setAllTable(int idGeocache) {
+        AllTable = DataBaseManager.getAllTable(idGeocache);
     }
 }
