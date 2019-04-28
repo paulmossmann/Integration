@@ -73,7 +73,7 @@ public class Geocache {
         return longitude;
     }
 
-    public static String getlatutude() {
+    public static String getlatitude() {
         return latitude;
     }
 
