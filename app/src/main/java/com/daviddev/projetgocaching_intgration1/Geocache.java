@@ -1,5 +1,6 @@
 package com.daviddev.projetgocaching_intgration1;
 
+import android.util.Log;
 import android.widget.Toast;
 
 public class Geocache {
@@ -79,6 +80,9 @@ public class Geocache {
         return Double.parseDouble(latitude);
     }
 
+    public static Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     public static String getTitle() {
         return title;
@@ -150,7 +154,7 @@ public class Geocache {
     }
 
     public void setTitle() {
-        this.title = AllTable[9];
+        this.title = AllTable[9];;
     }
 
     public static void setCoordinates(int idGeocache) {
