@@ -18,7 +18,7 @@ public class Geocache {
     public String[] clues;
     public static String[] AllTable;
 
-    Coordinates coordinates;
+    public static Coordinates coordinates;
 
 
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
@@ -69,11 +69,19 @@ public class Geocache {
         return clue_2;
     }
 
-    public Coordinates getCoordinates() {
+    public static String getLongitude() {
+        return longitude;
+    }
+
+    public static String getlatutude() {
+        return latitude;
+    }
+
+    public static Coordinates getCoordinates() {
         return coordinates;
     }
 
-    public String getTitle() {
+    public static String getTitle() {
         return title;
     }
 
@@ -146,9 +154,9 @@ public class Geocache {
         this.title = AllTable[9];;
     }
 
-    public void setCoordinates(int idGeocache) {
+    public static void setCoordinates(int idGeocache) {
         //Faire une modification pour avoir les coords du PROCHAIN géocache.
-        this.coordinates = DataBaseManager.getCoordinates(idGeocache);
+        coordinates = DataBaseManager.getCoordinates(idGeocache);
     }
 
     public static void setAllTable(int idGeocache) {
