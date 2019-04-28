@@ -3,6 +3,15 @@ package com.daviddev.projetgocaching_intgration1;
 public class Geocache {
 
     String question;
+    String answer;
+    String choice_1;
+    String choice_2;
+    String choice_3;
+    String clue_1;
+    String clue_2;
+    String longitude;
+    String latitude;
+    String titile;
 
     int answerNbr; //On ne récupére pas la réponse mais son indice dans le tableau de proposition.
     String[] proposals;
@@ -16,12 +25,18 @@ public class Geocache {
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
 
     public Geocache(int idGeocache /*L'id donnée via la classe parcours*/) {
-     /* setQuestion(idGeocache);
-        setAnswerNbr(idGeocache) ;
-        setProposals(idGeocache);
-        setClues(idGeocache);*/
+        /*setQuestion(idGeocache);
+        setAnswer(idGeocache);
+        setChoice_1(idGeocache);
+        setChoice_2(idGeocache);
+        setChoice_3(idGeocache);
+        setClue_1(idGeocache);
+        setClue_2(idGeocache);
+        setLongitude(idGeocache);
+        setLatitude(idGeocache);
+        setTitle(idGeocache);*/
+
         setCoordinates(idGeocache);
-        setTitle(idGeocache);
         setAllTable(idGeocache);
     }
 
@@ -31,16 +46,28 @@ public class Geocache {
         return question;
     }
 
-    public int getAnswerNbr() {
-        return answerNbr;
+    public String getAnswer() {
+        return answer;
     }
 
-    public String[] getProposals() {
-        return proposals;
+    public String getChoice_1() {
+        return choice_1;
     }
 
-    public String[] getClues() {
-        return clues;
+    public String getChoice_2() {
+        return choice_2;
+    }
+
+    public String getChoice_3() {
+        return choice_3;
+    }
+
+    public String getClue_1() {
+        return clue_1;
+    }
+
+    public String getClue_2() {
+        return clue_2;
     }
 
     public Coordinates getCoordinates() {
@@ -53,6 +80,7 @@ public class Geocache {
     public String[] getAllTable() {
         return AllTable;
     }
+
 
     //Modifieurs (Tu dois coder tes méthodes de databaseManager pour récupérer les données)
     /*
@@ -79,13 +107,48 @@ public class Geocache {
         this.clues = DataBaseManager.getClues(idGeocache);
     }
 */
+    public void setQuestion() {
+        this.question = AllTable[0];
+    }
+
+    public void setAnswer() {
+        this.answer = AllTable[1];
+    }
+
+    public void setChoice_1() {
+        this.choice_1 = AllTable[2];;
+    }
+
+    public void setChoice_2() {
+        this.choice_2 = AllTable[3];;
+    }
+
+    public void setChoice_3() {
+        this.choice_3 = AllTable[4];;
+    }
+
+    public void setClue_1() {
+        this.clue_1 = AllTable[5];;
+    }
+
+    public void setClue_2() {
+        this.clue_2 = AllTable[6];;
+    }
+
+    public void setLongitude() {
+        this.longitude = AllTable[7];;
+    }
+    public void setLatitude() {
+        this.latitude = AllTable[8];
+    }
+
+    public void setTitle() {
+        this.title = AllTable[9];;
+    }
+
     public void setCoordinates(int idGeocache) {
         //Faire une modification pour avoir les coords du PROCHAIN géocache.
         this.coordinates = DataBaseManager.getCoordinates(idGeocache);
-    }
-
-    public void setTitle(int idGeocache) {
-        this.title = DataBaseManager.getTitle(idGeocache);
     }
 
     public void setAllTable(int idGeocache) {
