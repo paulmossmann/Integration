@@ -40,7 +40,12 @@
         android:name=".ScanActivity"
         android:label="@string/title_activity_maps"
             android:theme="@style/Theme.TransparentPopup">
-    </activity>
+      </activity>
+
+        <activity
+            android:name=".QuestionActivity"
+            android:label="@string/title_activity_maps">
+        </activity>
 
 
         <activity

@@ -1,5 +1,8 @@
 package com.daviddev.projetgocaching_intgration1;
 
+import android.util.Log;
+import android.widget.Toast;
+
 public class Geocache {
 
     public static String question;
