@@ -29,18 +29,18 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
         question.setText(Geocache.getQuestion());
 
         clue = findViewById(R.id.clue);
-        clue.setText("reponse:" + Geocache.getAnswer());
+        clue.setText("reponse:" + Geocache.getClue_1());
 
         choice_1 = findViewById(R.id.choice_1);
-        choice_1.setText(Geocache.getQuestion());
+        choice_1.setText(Geocache.getChoice_1());
         choice_1.setOnClickListener(this);
 
         choice_2 = findViewById(R.id.choice_2);
-        choice_2.setText(Geocache.getQuestion());
+        choice_2.setText(Geocache.getChoice_2());
         choice_2.setOnClickListener(this);
 
         choice_3 = findViewById(R.id.choice_3);
-        choice_3.setText(Geocache.getQuestion());
+        choice_3.setText(Geocache.getChoice_3());
         choice_3.setOnClickListener(this);
 
     }

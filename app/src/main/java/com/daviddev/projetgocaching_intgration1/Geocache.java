@@ -23,8 +23,6 @@ public class Geocache {
 
     public static Coordinates coordinates;
 
-
-
     //Accésseurs (J'utilise seulement les accésseurs)
 
     public static String getQuestion() {
