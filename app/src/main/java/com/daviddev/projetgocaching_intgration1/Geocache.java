@@ -69,12 +69,12 @@ public class Geocache {
         return clue_2;
     }
 
-    public static String getLongitude() {
-        return longitude;
+    public static double getLongitude() {
+        return Double.parseDouble(longitude);
     }
 
-    public static String getlatitude() {
-        return latitude;
+    public static double getlatitude() {
+        return Double.parseDouble(latitude);
     }
 
     public static Coordinates getCoordinates() {
