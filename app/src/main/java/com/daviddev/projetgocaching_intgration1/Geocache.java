@@ -23,7 +23,6 @@ public class Geocache {
 
     public static Coordinates coordinates;
 
-
     //Constructeur de la classe qu'il faut appeler lors de la création d'un objet géocache
 
     public Geocache(int idGeocache /*L'id donnée via la classe parcours*/) {
