@@ -24,10 +24,9 @@ public class CourseActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        int []tableau = DataBaseManager.getAllCourseID();
+        int[]tableau = DataBaseManager.getAllCourseID();
 
         String disp = "";
-
 
         for (int i =0; i <tableau.length; i++)
             disp += "\n-->" + Integer.toString(tableau[i]);
