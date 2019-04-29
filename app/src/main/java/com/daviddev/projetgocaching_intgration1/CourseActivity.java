@@ -24,7 +24,7 @@ public class CourseActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        int []tableau = DataBaseManager.getAllCourseID();
+        int[]tableau = DataBaseManager.getAllCourseID();
 
         String disp = "";
 
