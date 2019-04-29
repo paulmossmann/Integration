@@ -52,6 +52,12 @@
             android:label="PostAnswer">
         </activity>
 
+        <activity
+            android:name=".CourseActivity"
+            android:label="PostAnswer">
+        </activity>
+
+
 
         <activity
             android:name=".StartActivity"
