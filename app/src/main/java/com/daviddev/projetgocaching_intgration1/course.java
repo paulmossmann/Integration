@@ -33,8 +33,7 @@ public class course {
     public static void setGeocache3() {
         Geocache3 = AllCourse[2];
     }
-
-
+    
     public static void setAllCourse(int IdCourse) {
         AllCourse = DataBaseManager.getAllCourse(IdCourse);
         setGeocache1();
