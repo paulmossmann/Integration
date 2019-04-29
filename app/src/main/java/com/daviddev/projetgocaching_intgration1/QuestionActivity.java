@@ -60,7 +60,6 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
             case R.id.choice_3:
                 txt = (String) choice_3.getText();
                 break;
-
         }
 
         if (txt == Geocache.getAnswer()){

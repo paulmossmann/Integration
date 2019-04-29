@@ -30,7 +30,7 @@ public class CourseActivity extends Activity implements View.OnClickListener {
 
 
         for (int i =0; i <tableau.length; i++)
-            disp += Integer.toString(tableau[i]);
+            disp += "\n-->" + Integer.toString(tableau[i]);
 
         Toast.makeText(this, disp, Toast.LENGTH_LONG).show();
 
