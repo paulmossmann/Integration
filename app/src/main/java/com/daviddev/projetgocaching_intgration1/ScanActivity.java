@@ -3,26 +3,23 @@ package com.daviddev.projetgocaching_intgration1;
 import android.app.Activity;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class ScanActivity extends Activity implements View.OnClickListener {
 
-    int test = 1;
-    RelativeLayout lay;
+    RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        lay = findViewById(R.id.lay);
-        lay.setOnClickListener(this);
+        layout = findViewById(R.id.lay);
+        layout.setOnClickListener(this);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
