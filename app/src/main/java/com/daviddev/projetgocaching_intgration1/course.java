@@ -21,7 +21,6 @@ public class course {
         return Geocache3;
     }
 
-
     public static void setGeocache1() {
         Geocache1 = AllCourse[0];
     }
