@@ -47,6 +47,11 @@
             android:label="@string/title_activity_maps">
         </activity>
 
+        <activity
+            android:name=".PostAnswerActivity"
+            android:label="PostAnswer">
+        </activity>
+
 
         <activity
             android:name=".StartActivity"
@@ -57,5 +62,7 @@
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>

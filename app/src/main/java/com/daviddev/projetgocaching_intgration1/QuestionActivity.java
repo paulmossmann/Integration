@@ -19,6 +19,8 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
     Button choice_2;
     Button choice_3;
     Intent intent;
+    int failNbr;
+    String txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +49,43 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-     /*   switch (view.getId()){
-
+        int nbrChoice;
+        switch (view.getId()){
             case R.id.choice_1:
-                if (choice_1.getText() == Geocache.getAnswer()) {
-                    Toast.makeText(this, "Bonne réponse", Toast.LENGTH_SHORT);
-                    intent = new Intent(this, MapsActivity.class);
-                    startActivity(intent);
-                    this.finish();
-                }
+                txt = (String) choice_1.getText();
+                break;
+            case R.id.choice_2:
+                txt = (String) choice_2.getText();
+                break;
+            case R.id.choice_3:
+                txt = (String) choice_3.getText();
                 break;
 
+        }
 
+        if (txt == Geocache.getAnswer()){
+            Toast.makeText(this, "Bravo!", Toast.LENGTH_LONG).show();
+            intent = new Intent(this,PostAnswerActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
+        else{
+            Toast.makeText(this, "Mauvaise réponse!", Toast.LENGTH_LONG).show();
+            failNbr++;
 
-        }*/
+            if(failNbr == 1)
+                clue.setVisibility(View.VISIBLE);
+                clue.setText(Geocache.getClue_1());
+            if(failNbr == 2)
+                clue.setText(Geocache.getClue_2());
+            if(failNbr == 3){
+                Toast.makeText(this, "La bonne réponse était: " + Geocache.getAnswer(), Toast.LENGTH_LONG).show();
+                intent = new Intent(this,PostAnswerActivity.class);
+                startActivity(intent);
+                this.finish();
+            }
+        }
 
-        intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-        this.finish();
 
     }
 }
