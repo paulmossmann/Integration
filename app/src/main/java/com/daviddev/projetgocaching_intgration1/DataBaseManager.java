@@ -323,8 +323,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
         return Integer.parseInt(Course_name);
     }
-
-
+    
     public static int getGeocache2(int IDCourse){
 
         String selectQuery;
