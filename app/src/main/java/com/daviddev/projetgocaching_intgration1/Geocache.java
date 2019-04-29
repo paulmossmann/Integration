@@ -19,8 +19,6 @@ public class Geocache {
     public String[] clues;
     public static String[] AllTable;
 
-    public static Coordinates coordinates;
-
     //Accésseurs (J'utilise seulement les accésseurs)
 
     public static String getQuestion() {
@@ -100,11 +98,6 @@ public class Geocache {
 
     public static void setTitle() {
         title = AllTable[9];
-    }
-
-    public static void setCoordinates(int idGeocache) {
-        //Faire une modification pour avoir les coords du PROCHAIN géocache.
-        coordinates = DataBaseManager.getCoordinates(idGeocache);
     }
 
     public static void setAllTable(int idGeocache) {

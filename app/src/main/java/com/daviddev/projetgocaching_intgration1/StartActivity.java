@@ -22,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         start = findViewById(R.id.start_button);
         new DataBaseManager(this);
 
-        intent = new Intent(this, CourseActivity.class);
+        intent = new Intent(this, ScanActivity.class);
         startActivity(intent);
         this.finish();
     }
