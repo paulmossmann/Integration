@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/salscaching2.db";
+    public static final String DATABASE_NAME = "/storage/sdcard0/Android/data/com.daviddev.projetgocaching_intgration1/salscaching.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -260,7 +260,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            CourseID = cursor.getString(cursor.getColumnIndex(CHOICE_3));
+            CourseID = cursor.getString(cursor.getColumnIndex(ID_COURSE));
             tab[i] = Integer.parseInt(CourseID);
             i++;
             cursor.moveToNext();
