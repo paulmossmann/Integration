@@ -260,7 +260,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            CourseID = cursor.getString(cursor.getColumnIndex(CHOICE_3));
+            CourseID = cursor.getString(cursor.getColumnIndex(ID_COURSE));
             tab[i] = Integer.parseInt(CourseID);
             i++;
             cursor.moveToNext();
