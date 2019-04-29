@@ -92,6 +92,7 @@ public class Geocache {
     public static void setLongitude() {
         longitude = AllTable[7];
     }
+
     public static void setLatitude() {
         latitude = AllTable[8];
     }
@@ -100,8 +101,8 @@ public class Geocache {
         title = AllTable[9];
     }
 
-    public static void setAllTable(int idGeocache) {
-        AllTable = DataBaseManager.getAllTable(idGeocache);
+    public static void setAllTable(int IdGeocache) {
+        AllTable = DataBaseManager.getAllTable(IdGeocache);
         setQuestion();
         setAnswer();
         setChoice_1();
@@ -112,5 +113,10 @@ public class Geocache {
         setLongitude();
         setLatitude();
         setTitle();
+    }
+
+    public static void setLongLat(int IdGeocache){
+        setLongitude();
+        setLatitude();
     }
 }

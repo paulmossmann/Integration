@@ -28,7 +28,6 @@ public class CourseActivity extends Activity implements View.OnClickListener {
 
         String disp = "";
 
-
         for (int i =0; i <tableau.length; i++)
             disp += "\n-->" + Integer.toString(tableau[i]);
 
