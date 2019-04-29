@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/bdd51.db";
+    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/salscaching1.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -64,29 +64,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public static Coordinates getCoordinates(int IDGeocache){
-
-        String selectQuery;
-        Cursor cursor;
-        double latitude = 0, longitude = 0;
-
-        selectQuery = "SELECT "+ LONGITUDE +" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
-        cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-                latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(LONGITUDE)));
-        }
-
-        selectQuery = "SELECT " + LATITUDE +" FROM " + TABLE_NAME_GEOCACHE +" WHERE " + KEY_ID + " = " + IDGeocache+" ";
-        cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(LATITUDE)));
-        }
-
-        Coordinates coords = new Coordinates(latitude, longitude);
-        return coords;
-    }
 
     public static String getTitle(int IDGeocache){
 
