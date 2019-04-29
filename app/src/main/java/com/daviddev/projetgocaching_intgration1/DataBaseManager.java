@@ -4,10 +4,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/salscaching.db";
+    public static final String DATABASE_NAME = "/storage/sdcard0/Android/data/com.daviddev.projetgocaching_intgration1/salscaching.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -278,15 +281,18 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         int i = 0;
         Cursor cursor;
         String CourseID = "";
-
+        ArrayList<String> ArrayList = new ArrayList<String>();
         selectQuery = "SELECT "+ID_COURSE+" FROM " + TABLE_NAME_COURSE+" ";
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
-            CourseID = cursor.getString(cursor.getColumnIndex(CHOICE_3));
-            tab[i] = Integer.parseInt(CourseID);
+            do {
+                CourseID = cursor.getString(cursor.getColumnIndex(ID_COURSE));
+                ArrayList.add(CourseID);
+            } while (cursor.moveToNext());
+            Log.d("array", ArrayList.toString());
+            tab[i] = Integer.parseInt(ArrayList.get(i));
             i++;
-            cursor.moveToNext();
         }
 
         return tab;
