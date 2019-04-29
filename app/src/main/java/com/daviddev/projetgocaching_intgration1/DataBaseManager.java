@@ -339,8 +339,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
         return tab;
     }
-
-
+    
 
     public static String[] getAllCourse(int IDCourse){
 
