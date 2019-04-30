@@ -6,8 +6,8 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class ScanActivity extends Activity implements View.OnClickListener {
 
@@ -35,12 +35,17 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 
         if (intent.hasExtra(NfcAdapter.EXTRA_TAG)) {
 
-            String geocacheId = GeocacheManager.readGeocacheId(intent);
-            Geocache.setAllTable(Integer.parseInt(geocacheId));
+            int geocacheId = Integer.parseInt(GeocacheManager.readGeocacheId(intent));
 
-            intent = new Intent(this, QuestionActivity.class);
-            startActivity(intent);
-            this.finish();
+            if (geocacheId != Course.getNextGeocacheId())
+                Toast.makeText(this, "mauvais géocache >" + Integer.toString(Course.getNextGeocacheId()), Toast.LENGTH_LONG).show();
+            else{
+                Course.geocacheHasBeenScanned();
+                Geocache.setupGeocache();
+                intent = new Intent(this, QuestionActivity.class);
+                startActivity(intent);
+                this.finish();
+            }
 
         }
     }

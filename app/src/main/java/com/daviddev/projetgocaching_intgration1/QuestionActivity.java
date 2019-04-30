@@ -63,10 +63,17 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
         }
 
         if (txt == Geocache.getAnswer()){
-            Toast.makeText(this, "Bravo!", Toast.LENGTH_LONG).show();
-            intent = new Intent(this,PostAnswerActivity.class);
-            startActivity(intent);
-            this.finish();
+            if (Course.isEnded()){
+                intent = new Intent(this,EndActivity.class);
+                startActivity(intent);
+                this.finish();
+            }
+            else{
+                Toast.makeText(this, "Bravo!", Toast.LENGTH_LONG).show();
+                intent = new Intent(this,PostAnswerActivity.class);
+                startActivity(intent);
+                this.finish();
+            }
         }
         else{
             Toast.makeText(this, "Mauvaise réponse!", Toast.LENGTH_LONG).show();
@@ -78,10 +85,18 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
             if(failNbr == 2)
                 clue.setText(Geocache.getClue_2());
             if(failNbr == 3){
-                Toast.makeText(this, "La bonne réponse était: " + Geocache.getAnswer(), Toast.LENGTH_LONG).show();
-                intent = new Intent(this,PostAnswerActivity.class);
-                startActivity(intent);
-                this.finish();
+
+                if (Course.isEnded()){
+                    intent = new Intent(this,EndActivity.class);
+                    startActivity(intent);
+                    this.finish();
+                }
+                else{
+                    Toast.makeText(this, "La bonne réponse était: " + Geocache.getAnswer(), Toast.LENGTH_LONG).show();
+                    intent = new Intent(this,PostAnswerActivity.class);
+                    startActivity(intent);
+                    this.finish();
+                }
             }
         }
 

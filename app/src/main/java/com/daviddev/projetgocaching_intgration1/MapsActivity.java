@@ -48,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //!Asynchrome
     public void onMapReady(GoogleMap googleMap) {
         //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(Geocache.getLatitude(), Geocache.getLongitude());
+        LatLng geocachePoint = new LatLng(Geocache.getNextLatitude(), Geocache.getNextLongitude());
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
 

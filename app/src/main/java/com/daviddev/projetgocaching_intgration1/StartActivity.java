@@ -7,24 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-// !!! C'est cette activité qui crée un objet DbManager dés le lancement de l'appli
-// Ceci permet d'éviter l'appel du "this" dans toutes tes méthdoes.
+public class StartActivity extends AppCompatActivity implements View.OnClickListener{
 
-public class StartActivity extends AppCompatActivity {
-
-    Button start;
+    Button start_button;
     Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        start = findViewById(R.id.start_button);
-        new DataBaseManager(this);
 
-        intent = new Intent(this, CourseActivity.class);
-        startActivity(intent);
-        this.finish();
+        start_button = findViewById(R.id.start_button);
+        start_button.setOnClickListener(this);
+
+        new DataBaseManager(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.start_button){
+            intent = new Intent(this, CourseActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
+
+    }
 }

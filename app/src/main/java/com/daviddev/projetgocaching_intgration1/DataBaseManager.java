@@ -68,7 +68,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         onUpgrade(db, oldVersion, newVersion);
     }
 
-
     public static String getTitle(int IDGeocache){
 
         String selectQuery;
@@ -115,22 +114,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
 
         return Answer;
-    }
-
-    public static char getChoices(int IDGeocache){
-
-        String selectQuery;
-        Cursor cursor;
-        String Choice1 = "";
-        char table[] = new char[2];
-        selectQuery = "SELECT "+CHOICE_1+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
-        cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            Choice1 = cursor.getString(cursor.getColumnIndex(CHOICE_1));
-        }
-
-        return table[1];
     }
 
     public static String getChoice1(int IDGeocache){
@@ -213,11 +196,13 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return Clue2;
     }
 
-    public static String getLongitude(int IDGeocache){
+    public static String getLongitude(int id){
 
         String selectQuery;
         Cursor cursor;
         String Longitude = "";
+
+        int IDGeocache = Course.getNextGeocacheId();
 
         selectQuery = "SELECT "+LONGITUDE+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
@@ -229,11 +214,13 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return Longitude;
     }
 
-    public static String getLatitude(int IDGeocache){
+    public static String getLatitude(int id){
 
         String selectQuery;
         Cursor cursor;
         String Latitude = "";
+
+        int IDGeocache = Course.getNextGeocacheId();
 
         selectQuery = "SELECT "+LATITUDE+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
@@ -245,14 +232,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return Latitude;
     }
 
-
-    public static int getCourseID(){
-
-
-        return 5;
-    }
-
-    public static int[] getAllCourseID(){
+    public static int[] getCoursesIds(){
 
         int tab[] = new int[3];
         String selectQuery;
@@ -276,20 +256,15 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return tab;
     }
 
-    public static String getCourseName(int IDCourse){
 
-        String selectQuery;
-        Cursor cursor;
-        String Course_name = "";
+    public static int[] getAllCourse(int IDCourse){
 
-        selectQuery = "SELECT "+COURSE_NAME+" FROM " + TABLE_NAME_COURSE+" WHERE "+ID_COURSE+" = " +IDCourse+" ";
-        cursor = db.rawQuery(selectQuery, null);
+        int tab[] = new int[3];
+        tab[0] = getGeocache1(IDCourse);
+        tab[1] = getGeocache2(IDCourse);
+        tab[2] = getGeocache3(IDCourse);
 
-        if (cursor.moveToFirst()) {
-            Course_name = cursor.getString(cursor.getColumnIndex(COURSE_NAME));
-        }
-
-        return Course_name;
+        return tab;
     }
 
     public static int getGeocache1(int IDCourse){
@@ -307,7 +282,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
         return Integer.parseInt(Geocache1);
     }
-
 
     public static int getGeocache2(int IDCourse){
 
@@ -340,42 +314,22 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
 
         return Integer.parseInt(Geocache3);
+    }
+
+    public static String getCourseName(int IDCourse){
+
+        String selectQuery;
+        Cursor cursor;
+        String Course_name = "";
+
+        selectQuery = "SELECT "+COURSE_NAME+" FROM " + TABLE_NAME_COURSE+" WHERE "+ID_COURSE+" = " +IDCourse+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            Course_name = cursor.getString(cursor.getColumnIndex(COURSE_NAME));
         }
 
-
-    public static String[] getAllTable(int IDGeocache){
-
-        String tab[] = new String[10];
-        tab[0] = getQuestion(IDGeocache);
-        tab[1] = getAnswer(IDGeocache);
-        tab[2] = getChoice1(IDGeocache);
-        tab[3] = getChoice2(IDGeocache);
-        tab[4] = getChoice3(IDGeocache);
-        tab[5] = getClue1(IDGeocache);
-        tab[6] = getClue2(IDGeocache);
-        tab[7] = getLatitude(IDGeocache);
-        tab[8] = getLongitude(IDGeocache);
-        tab[9] = getTitle(IDGeocache);
-
-        return tab;
-    }
-
-    public static String[] getLongLat(int IDGeocache){
-        String tab[] = new String[1];
-        tab[0] = getLongitude(IDGeocache);
-        tab[1] = getLatitude(IDGeocache);
-
-        return tab;
-    }
-
-    public static int[] getAllCourse(int IDCourse){
-
-        int tab[] = new int[3];
-        tab[0] = getGeocache1(IDCourse);
-        tab[1] = getGeocache2(IDCourse);
-        tab[2] = getGeocache3(IDCourse);
-
-        return tab;
+        return Course_name;
     }
 
 }
