@@ -9,18 +9,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 public class QuestionActivity extends Activity implements View.OnClickListener {
 
-    TextView question;
-    TextView clue;
+    TextView question, clue;
+    String clue1, clue2, answer;
     Button choice_1;
     Button choice_2;
     Button choice_3;
     Intent intent;
     int failNbr;
-    String txt;
+    String attempt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,11 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
         question = findViewById(R.id.question);
         question.setText(Geocache.getQuestion());
 
+        answer = Geocache.getAnswer();
+
         clue = findViewById(R.id.clue);
-        clue.setText("reponse:" + Geocache.getClue_1());
+        clue1 = Geocache.getClue_1();
+        clue2 = Geocache.getClue_2();
 
         choice_1 = findViewById(R.id.choice_1);
         choice_1.setText(Geocache.getChoice_1());
@@ -44,62 +46,53 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
         choice_3 = findViewById(R.id.choice_3);
         choice_3.setText(Geocache.getChoice_3());
         choice_3.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
-        int nbrChoice;
+
         switch (view.getId()){
             case R.id.choice_1:
-                txt = (String) choice_1.getText();
+                attempt = (String) choice_1.getText();
                 break;
             case R.id.choice_2:
-                txt = (String) choice_2.getText();
+                attempt = (String) choice_2.getText();
                 break;
             case R.id.choice_3:
-                txt = (String) choice_3.getText();
+                attempt = (String) choice_3.getText();
                 break;
         }
 
-        if (txt == Geocache.getAnswer()){
+        if (attempt.equals(answer)){
+            Toast.makeText(this, "Bien joué!", Toast.LENGTH_LONG).show();
             if (Course.isEnded()){
                 intent = new Intent(this,EndActivity.class);
                 startActivity(intent);
                 this.finish();
             }
-            else{
-                Toast.makeText(this, "Bravo!", Toast.LENGTH_LONG).show();
-                intent = new Intent(this,PostAnswerActivity.class);
+            else {
+                intent = new Intent(this, PostAnswerActivity.class);
                 startActivity(intent);
                 this.finish();
             }
         }
-        else{
-            Toast.makeText(this, "Mauvaise réponse!", Toast.LENGTH_LONG).show();
-            failNbr++;
-
-            if(failNbr == 1)
+        else {
+            if (failNbr == 0) {
                 clue.setVisibility(View.VISIBLE);
-                clue.setText(Geocache.getClue_1());
-            if(failNbr == 2)
-                clue.setText(Geocache.getClue_2());
-            if(failNbr == 3){
-
-                if (Course.isEnded()){
-                    intent = new Intent(this,EndActivity.class);
+                clue.setText("Indice 1:\n" + clue1);
+                failNbr++;
+            } else {
+                Toast.makeText(this, "La bonne réponse était:" + answer, Toast.LENGTH_LONG).show();
+                if (Course.isEnded()) {
+                    intent = new Intent(this, EndActivity.class);
                     startActivity(intent);
                     this.finish();
-                }
-                else{
-                    Toast.makeText(this, "La bonne réponse était: " + Geocache.getAnswer(), Toast.LENGTH_LONG).show();
-                    intent = new Intent(this,PostAnswerActivity.class);
+                } else {
+                    intent = new Intent(this, PostAnswerActivity.class);
                     startActivity(intent);
                     this.finish();
                 }
             }
         }
-
-
     }
 }

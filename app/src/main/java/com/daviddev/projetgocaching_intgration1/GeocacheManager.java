@@ -18,20 +18,22 @@ import java.util.Arrays;
 
 public class GeocacheManager {
 
+    static int INVALID_ARGUMENT = -1;
+
     public static String readGeocacheId(Intent intent){
-
+        String payload = "";
+        if (intent == null)
+            return null;
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        String payload = readNdefMessage(tag);
+        payload = readNdefMessage(tag);
         return payload;
-
     }
 
-    public static void writeGeocacheId(Tag tag){
-        writeNdefMessage(tag, "");
-
-/*test 2*/
-
-
+    public static int writeGeocacheId(Tag tag, String txt){
+        if (tag == null || txt == null)
+            return INVALID_ARGUMENT;
+        writeNdefMessage(tag, txt);
+        return 1;
     }
 
     //Methode to read
@@ -98,13 +100,7 @@ public class GeocacheManager {
 
     private static void writeNdefMessage(Tag tag, String writeText) {
 
-        //Vérification
-        if (tag == null) {
-            return;
-        }
-
         try {
-
             // Translate string text to ndef message
             NdefRecord ndefRecord = NdefRecord.createTextRecord( null, writeText);
             NdefMessage ndefMessage = new NdefMessage(ndefRecord);
@@ -177,7 +173,14 @@ public class GeocacheManager {
     public static void disableCatchingNfcIntents(Context context) {
 
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
-
         nfcAdapter.disableForegroundDispatch((Activity) context);
+    }
+
+    public static boolean isNfcEnable(Context context) {
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
+        if (nfcAdapter == null || !nfcAdapter.isEnabled())
+            return false;
+        else
+            return true;
     }
 }

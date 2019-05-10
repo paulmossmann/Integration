@@ -1,17 +1,17 @@
 package com.daviddev.projetgocaching_intgration1;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
-
-import java.net.IDN;
 import java.util.ArrayList;
+import java.io.File;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/storage/self/primary/Android/data/com.daviddev.projetgocaching_intgration1/salscaching2.db";
+    public static final String DATABASE_NAME = "/sdcard/Android/data/com.sals.caching/BDD.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -26,6 +26,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String LONGITUDE = "Longitude";
     public static final String LATITUDE = "Latitude";
     public static final String TITLE = "Title";
+    public static final String URL = "Url";
 
     public static final String TABLE_NAME_COURSE = "course";
     public static final String ID_COURSE = "Id_course";
@@ -34,8 +35,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public static final String ID_GEOCACHE_2 = "Id_geocache_2";
     public static final String ID_GEOCACHE_3 = "Id_geocache_3";
 
-    //Sont crées lors du démarrage de l'application dans StartActivity
-    static DataBaseManager dbHelper;
     static SQLiteDatabase db;
 
     private static final String SQL_CREATE_ENTRIES =
@@ -51,8 +50,18 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     public DataBaseManager(Context context) {
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        dbHelper = this;
-        db = dbHelper.getReadableDatabase();
+        db = this.getReadableDatabase();
+    }
+
+    public static void CreatePath() {
+        File folder = new File("/sdcard/Android/data/com.sals.caching");
+        File folderimg = new File("/sdcard/Android/data/com.sals.caching/images");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+        if (!folderimg.exists()) {
+            folderimg.mkdir();
+        }
     }
 
     public void onCreate(SQLiteDatabase db){
@@ -66,7 +75,10 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
+
     }
+
+
 
     public static String getTitle(int IDGeocache){
 
@@ -89,7 +101,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         String selectQuery;
         Cursor cursor;
         String question = "";
-        char test[];
         selectQuery = "SELECT "+QUESTION+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+KEY_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
@@ -256,7 +267,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return tab;
     }
 
-
     public static int[] getAllCourse(int IDCourse){
 
         int tab[] = new int[3];
@@ -299,7 +309,6 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return Integer.parseInt(Geocache2);
     }
 
-
     public static int getGeocache3(int IDCourse){
 
         String selectQuery;
@@ -330,6 +339,23 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         }
 
         return Course_name;
+    }
+
+    public static String getURL(int IDCourse){
+        String selectQuery;
+        Cursor cursor;
+        String URL = "";
+
+        selectQuery = "SELECT "+URL+" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+ID_COURSE+" = " +IDCourse+" ";
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            URL = cursor.getString(cursor.getColumnIndex(URL));
+        }
+
+        return URL;
+
+
     }
 
 }

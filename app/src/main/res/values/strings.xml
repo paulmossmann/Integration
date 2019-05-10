@@ -3,4 +3,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="this_is_the_end">this is the end</string>
     <string name="ok">Ok !</string>
+    <string name="explanationWrite">Enter your text bellow and scan a NFC tag.</string>
+    <string name="explanationRead">Scan a tag and the content will be apear bellow:</string>
 </resources>

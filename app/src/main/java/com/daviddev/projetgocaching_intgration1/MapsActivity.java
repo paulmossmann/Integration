@@ -1,7 +1,6 @@
 package com.daviddev.projetgocaching_intgration1;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
@@ -9,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,30 +33,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         find_map_button = findViewById(R.id.find_map_button);
         find_map_button.setOnClickListener(this);
-    }
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    //!Asynchrome
-    public void onMapReady(GoogleMap googleMap) {
-        //Création d'un point GPS à partir de la latitude et de la longitude
-        LatLng geocachePoint = new LatLng(Geocache.getNextLatitude(), Geocache.getNextLongitude());
-        //Création d'un niveau de zoom
-        float zoomLevel = (float) 18.0;
-
-        //Selection du type de carte
-        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
-        //Ajout du point GPS sur la carte
-        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(Geocache.getTitle()));
 
         //Demande d'accés à la permission de localisation GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -64,10 +40,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Manifest.permission.ACCESS_FINE_LOCATION
             }, 1);
         }
+    }
 
+    @Override
+
+    public void onMapReady(GoogleMap googleMap) {
+
+        //Création d'un point GPS à partir de la latitude et de la longitude
+        LatLng geocachePoint = new LatLng( Geocache.getNextLatitude(), Geocache.getNextLongitude());
+        //Création d'un niveau de zoom
+        float zoomLevel = (float) 18.0;
+        //Selection du type de carte
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        //Ajout du point GPS sur la carte
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(Geocache.getNextTitle()));
         //Activé la localisation du smartphone
         googleMap.setMyLocationEnabled(true);
-
         //Centrer la carte sur le point GPS crée et régler le zoom
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
     }
@@ -76,9 +64,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.find_map_button:
-                intent = new Intent(this, ScanActivity.class);
-                startActivity(intent);
-                break;
+
+                if (GeocacheManager.isNfcEnable(this)){
+                    intent = new Intent(this, ScanActivity.class);
+                    startActivity(intent);
+                    break;
+                }
+                else
+                    Toast.makeText(this, "Vous devez activer NFC sur votre smartphone !", Toast.LENGTH_SHORT).show();
+
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        GeocacheManager.disableCatchingNfcIntents(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GeocacheManager.enableCatchingNfcIntents(this);
     }
 }

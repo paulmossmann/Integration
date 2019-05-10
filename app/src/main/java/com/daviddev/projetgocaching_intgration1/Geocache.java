@@ -3,7 +3,6 @@ package com.daviddev.projetgocaching_intgration1;
 
 public class Geocache {
 
-    private static int id;
     private static String question;
     private static String answer;
     private static String choice_1;
@@ -11,6 +10,7 @@ public class Geocache {
     private static String choice_3;
     private static String clue_1;
     private static String clue_2;
+    private static String url;
 
     public static String getQuestion() {
         return question;
@@ -40,6 +40,10 @@ public class Geocache {
         return clue_2;
     }
 
+    public static String getUrl(){
+        return url;
+    }
+
     public static double getNextLongitude() {
 
         return Double.parseDouble(DataBaseManager.getLongitude(Course.getNextGeocacheId()));
@@ -52,12 +56,11 @@ public class Geocache {
 
     }
 
-    public static String getTitle() {
+    public static String getNextTitle() {
         return DataBaseManager.getTitle(Course.getNextGeocacheId());
     }
 
     public static void setupGeocache() {
-        id = Course.getCurrentGeocacheId();
         question = DataBaseManager.getQuestion(Course.getCurrentGeocacheId());
         answer = DataBaseManager.getAnswer(Course.getCurrentGeocacheId());
         choice_1 = DataBaseManager.getChoice1(Course.getCurrentGeocacheId());
@@ -65,5 +68,6 @@ public class Geocache {
         choice_3 = DataBaseManager.getChoice3(Course.getCurrentGeocacheId());
         clue_1 = DataBaseManager.getClue1(Course.getCurrentGeocacheId());
         clue_2 = DataBaseManager.getClue2(Course.getCurrentGeocacheId());
+        url = DataBaseManager.getURL(Course.getCurrentGeocacheId());
     }
 }

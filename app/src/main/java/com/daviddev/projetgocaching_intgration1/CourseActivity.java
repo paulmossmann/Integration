@@ -20,11 +20,11 @@ public class CourseActivity extends Activity implements View.OnClickListener {
 
         course1 = findViewById(R.id.course1);
         course1.setOnClickListener(this);
-        course1.setText(DataBaseManager.getCourseName(coursesIds[0]));
+        course1.setText(Course.getCourseName(coursesIds[0]));
 
         course2 = findViewById(R.id.course2);
         course2.setOnClickListener(this);
-        course2.setText(DataBaseManager.getCourseName(coursesIds[2]));
+        course2.setText(Course.getCourseName(coursesIds[2]));
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.daviddev.projetgocaching_intgration1;
 
-import android.util.Log;
-
 public class Course {
 
     static int[] geocacheIds;
@@ -37,4 +35,7 @@ public class Course {
         return DataBaseManager.getCoursesIds();
     }
 
+    public static String getCourseName(int id){
+        return DataBaseManager.getCourseName(id);
+    }
 }

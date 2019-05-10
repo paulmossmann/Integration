@@ -37,22 +37,28 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 
             int geocacheId = Integer.parseInt(GeocacheManager.readGeocacheId(intent));
 
-            if (geocacheId != Course.getNextGeocacheId())
-                Toast.makeText(this, "mauvais géocache >" + Integer.toString(Course.getNextGeocacheId()), Toast.LENGTH_LONG).show();
-            else{
+            if(isExpectedGeocache(geocacheId)){
                 Course.geocacheHasBeenScanned();
                 Geocache.setupGeocache();
                 intent = new Intent(this, QuestionActivity.class);
                 startActivity(intent);
                 this.finish();
             }
+            else{
+                Toast.makeText(this, "Vous scannez le mauvais géocache !", Toast.LENGTH_LONG).show();
+            }
 
         }
     }
 
+    public boolean isExpectedGeocache(int id){
+        return id == Course.getNextGeocacheId();
+    }
+
     @Override
     public void onClick(View v) {
-        ScanActivity.this.finish();
+        this.finish();
+        GeocacheManager.disableCatchingNfcIntents(this);
     }
 
     // Disable Catching Nfc Intents
