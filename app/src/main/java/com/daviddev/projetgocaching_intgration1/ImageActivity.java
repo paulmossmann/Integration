@@ -34,7 +34,8 @@ public class ImageActivity extends Activity implements View.OnClickListener {
 
         image_list = findViewById(R.id.image_list);
 
-     //   int id = Course.getCurrentGeocacheId();
+      //  int id = Course.getCurrentGeocacheId();
+        int id2 = Course.getNextGeocacheId();
 
         String path = Geocache.getUrl();
 
