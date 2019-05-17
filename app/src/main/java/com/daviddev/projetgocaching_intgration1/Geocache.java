@@ -41,7 +41,7 @@ public class Geocache {
     }
 
     public static String getUrl(){
-        return url;
+        return  DataBaseManager.getURL(Course.getNextGeocacheId());
     }
 
     public static double getNextLongitude() {
