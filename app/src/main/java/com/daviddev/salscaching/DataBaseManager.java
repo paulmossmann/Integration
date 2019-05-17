@@ -1,4 +1,4 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -79,11 +79,7 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     }
 
     public static void CreatePath() {
-        File folder = new File("/sdcard/Android/data/com.sals.caching");
-        File folderimg = new File("/sdcard/Android/data/com.sals.caching/images");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
+        File folderimg = new File("/sdcard/Android/data/com.daviddev.projetgocaching_intgration1/images");
         if (!folderimg.exists()) {
             folderimg.mkdir();
         }

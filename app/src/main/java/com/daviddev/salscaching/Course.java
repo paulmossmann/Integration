@@ -1,4 +1,4 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 public class Course {
 
