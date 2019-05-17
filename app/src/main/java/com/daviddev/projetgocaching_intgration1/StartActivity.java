@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         start_button = findViewById(R.id.start_button);
         start_button.setOnClickListener(this);
 
-        DataBaseManager.CreatePath();
+        //DataBaseManager.CreatePath();
         new DataBaseManager(this);
     }
 
@@ -33,4 +33,5 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
 }

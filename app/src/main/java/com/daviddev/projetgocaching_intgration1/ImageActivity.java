@@ -37,7 +37,7 @@ public class ImageActivity extends Activity implements View.OnClickListener {
       //  int id = Course.getCurrentGeocacheId();
         int id2 = Course.getNextGeocacheId();
 
-        String path = Geocache.getUrl();
+        String path = Geocache.getNextURL();
 
         if (path == null) {
             Toast.makeText(this, "probleme d'affichage de l'image", Toast.LENGTH_SHORT).show();
