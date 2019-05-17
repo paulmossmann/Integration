@@ -10,7 +10,6 @@ public class Geocache {
     private static String choice_3;
     private static String clue_1;
     private static String clue_2;
-    private static String url;
 
     public static String getQuestion() {
         return question;
@@ -40,9 +39,7 @@ public class Geocache {
         return clue_2;
     }
 
-    public static String getUrl(){
-        return url;
-    }
+
 
     public static double getNextLongitude() {
 
@@ -53,6 +50,12 @@ public class Geocache {
     public static double getNextLatitude() {
 
         return Double.parseDouble(DataBaseManager.getLatitude(Course.getNextGeocacheId()));
+
+    }
+
+    public static String getNextURL() {
+
+        return DataBaseManager.getURL(Course.getNextGeocacheId());
 
     }
 
@@ -68,6 +71,5 @@ public class Geocache {
         choice_3 = DataBaseManager.getChoice3(Course.getCurrentGeocacheId());
         clue_1 = DataBaseManager.getClue1(Course.getCurrentGeocacheId());
         clue_2 = DataBaseManager.getClue2(Course.getCurrentGeocacheId());
-        url = DataBaseManager.getURL(Course.getCurrentGeocacheId());
     }
 }

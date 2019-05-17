@@ -11,7 +11,7 @@ import java.io.File;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/sdcard/Android/data/com.sals.caching/BDD.db";
+    public static final String DATABASE_NAME = "/sdcard/Android/data/com.daviddev.projetgocaching_intgration1/BDD.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
@@ -90,13 +90,13 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
     }
 
     public void onCreate(SQLiteDatabase db){
-        db.execSQL(SQL_CREATE_GEOCACHE);
-        db.execSQL(SQL_CREATE_COURSE);
+        //db.execSQL(SQL_CREATE_GEOCACHE);
+        //db.execSQL(SQL_CREATE_COURSE);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_COURSE);
-        onCreate(db);
+        //db.execSQL(SQL_DELETE_COURSE);
+        //onCreate(db);
     }
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -367,12 +367,12 @@ public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
         return Course_name;
     }
 
-    public static String getURL(int IDGeocache){
+    public static String getURL(int id){
         String selectQuery;
         Cursor cursor;
         String url = "";
-
-        selectQuery = "SELECT "+ URL +" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+COURSE_ID+" = " +IDGeocache+" ";
+        int IDGeocache = Course.getNextGeocacheId();
+        selectQuery = "SELECT "+ URL +" FROM " + TABLE_NAME_GEOCACHE+" WHERE "+GEOCACHE_ID+" = " +IDGeocache+" ";
         cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {

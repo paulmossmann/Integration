@@ -54,7 +54,7 @@ public class DataBaseManagerTest2 {
     public void setUp() throws Exception {
 
         StartActivity = mActivityRule.getActivity();
-        context = StartActivity.getContext();
+        context = StartActivity.getApplicationContext();
         new DataBaseManager(context);
 
     }
@@ -71,6 +71,13 @@ public class DataBaseManagerTest2 {
     public void tearDown() throws Exception {
     }
 
+    @Test
+    public void getURL(){
+        String actual;
+        String expected = "/sdcard/Android/data/com.sals.caching/images/geo_1.jpg";
+        actual = DataBaseManager.getURL(2);
+        assertEquals(actual, expected);
+    }
 
 
 }
