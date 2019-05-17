@@ -3,7 +3,6 @@ package com.daviddev.projetgocaching_intgration1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -66,7 +65,7 @@ public class QuestionActivity extends Activity implements View.OnClickListener {
         if (attempt.equals(answer)){
             Toast.makeText(this, "Bien joué!", Toast.LENGTH_LONG).show();
             if (Course.isEnded()){
-                intent = new Intent(this,EndActivity.class);
+                intent = new Intent(this, EndActivity.class);
                 startActivity(intent);
                 this.finish();
             }

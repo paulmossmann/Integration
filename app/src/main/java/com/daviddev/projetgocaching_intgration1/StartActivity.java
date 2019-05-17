@@ -1,6 +1,5 @@
 package com.daviddev.projetgocaching_intgration1;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +11,12 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
     Button start_button;
     Intent intent;
-    private static Context context;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        context = getApplicationContext();
+
         start_button = findViewById(R.id.start_button);
         start_button.setOnClickListener(this);
 
@@ -33,10 +31,6 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             this.finish();
         }
-    }
 
-    public static  Context getContext(){
-        return context;
     }
-
 }

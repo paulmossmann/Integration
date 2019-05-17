@@ -29,22 +29,35 @@ public class ScanActivity extends Activity implements View.OnClickListener {
 
     }
 
+
+    //Detection d'une nouvelle intention
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
+        //Si l'intention correspond à un scan d'un tag NFC
         if (intent.hasExtra(NfcAdapter.EXTRA_TAG)) {
 
-            int geocacheId = Integer.parseInt(GeocacheManager.readGeocacheId(intent));
+            //Récupération de l'identifiant du tag NFC (du géocache)
+            int geocacheId = Integer.parseInt(GeocacheManager.readGeocacheId(intent)); //->NumberFormatException
 
+            //Si l'id du tag NFC scanné correspond à l'id attendu.
             if(isExpectedGeocache(geocacheId)){
+
+                //Mise à jour du parcours
                 Course.geocacheHasBeenScanned();
+                //Mise à jour des informations pour le géocache en cours
                 Geocache.setupGeocache();
+
+                //Configuration et lancement de l'activité de question.
                 intent = new Intent(this, QuestionActivity.class);
                 startActivity(intent);
+
+                MapsActivity.maps.finish();
                 this.finish();
             }
+            //Si l'id du tag NFC scanné ne correspond pas à l'id attendu.
             else{
+                //Affichage d'un message d'erreur
                 Toast.makeText(this, "Vous scannez le mauvais géocache !", Toast.LENGTH_LONG).show();
             }
 
