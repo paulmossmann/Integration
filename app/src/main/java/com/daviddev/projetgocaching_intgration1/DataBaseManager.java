@@ -11,7 +11,7 @@ import java.io.File;
 
 public class DataBaseManager extends SQLiteOpenHelper implements BaseColumns{
 
-    public static final String DATABASE_NAME = "/sdcard/Android/data/com.daviddev.projetgocaching_intgration1/BDD.db";
+    public static final String DATABASE_NAME = "/sdcard/Android/data/com.sals.caching/BDD.db";
     public static final String TABLE_NAME = "salscaching";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME_GEOCACHE = "geocache";
