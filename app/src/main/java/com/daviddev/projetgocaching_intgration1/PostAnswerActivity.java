@@ -24,6 +24,7 @@ public class PostAnswerActivity extends Activity implements View.OnClickListener
         if (view.getId() == R.id.valid_button){
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
+            this.finish();
         }
     }
 }

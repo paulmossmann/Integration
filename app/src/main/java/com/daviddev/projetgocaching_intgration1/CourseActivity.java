@@ -5,42 +5,50 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class CourseActivity extends Activity implements View.OnClickListener {
 
     Intent intent;
-    Button course1, course2;
+    Button[] courses_buttons;
+    int[] coursesIds;
+    int coursesNbr;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
 
-        int[] coursesIds = Course.getCoursesIds();
+        LinearLayout question_linear_layout = findViewById(R.id.question_linear_layout);
 
-        course1 = findViewById(R.id.course1);
-        course1.setOnClickListener(this);
-        course1.setText(Course.getCourseName(coursesIds[0]));
+        coursesIds = Course.getCoursesIds();
+        coursesNbr = coursesIds.length;
+        courses_buttons = new Button[coursesNbr];
 
-        course2 = findViewById(R.id.course2);
-        course2.setOnClickListener(this);
-        course2.setText(Course.getCourseName(coursesIds[2]));
+        int i;
+        for(i = 0 ; i < coursesNbr; i++){
+
+            courses_buttons[i] = new Button(this);
+            courses_buttons[i].setText(Course.getCourseName(coursesIds[i]));
+            courses_buttons[i].setOnClickListener(this);
+            courses_buttons[i].setId(i);
+            question_linear_layout.addView(courses_buttons[i]);
+
+        }
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == R.id.course1){
-            Course.setupCourse(1);
+        int id = view.getId();
+
+        if(id >= 0 && id < coursesNbr) {
+            courses_buttons[view.getId()].setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            Course.setupCourse(coursesIds[id]);
             intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
             this.finish();
         }
-        else if (view.getId() == R.id.course2) {
-            Course.setupCourse(3);
-            intent = new Intent(this, MapsActivity.class);
-            startActivity(intent);
-            this.finish();
-        }
+
     }
 }
