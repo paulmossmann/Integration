@@ -1,4 +1,4 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -7,7 +7,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.daviddev.projetgocaching_intgration1.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

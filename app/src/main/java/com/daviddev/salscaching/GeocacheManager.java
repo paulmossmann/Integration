@@ -1,4 +1,4 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 import android.app.Activity;
 import android.app.PendingIntent;

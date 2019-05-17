@@ -1,15 +1,16 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.daviddev.projetgocaching_intgration1.R;
 
 public class ImageActivity extends Activity implements View.OnClickListener {
 

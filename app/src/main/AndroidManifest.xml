@@ -35,43 +35,43 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="com.daviddev.salscaching.MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
 
         <activity
-        android:name=".ScanActivity"
+        android:name="com.daviddev.salscaching.ScanActivity"
         android:label="@string/title_activity_maps"
             android:theme="@style/Theme.TransparentPopup">
       </activity>
 
         <activity
-            android:name=".QuestionActivity"
+            android:name="com.daviddev.salscaching.QuestionActivity"
             android:label="@string/title_activity_maps">
         </activity>
 
         <activity
-            android:name=".PostAnswerActivity"
+            android:name="com.daviddev.salscaching.PostAnswerActivity"
             android:label="PostAnswer">
         </activity>
 
         <activity
-            android:name=".ImageActivity"
+            android:name="com.daviddev.salscaching.ImageActivity"
             android:label="PostAnswer">
         </activity>
 
         <activity
-            android:name=".EndActivity"
+            android:name="com.daviddev.salscaching.EndActivity"
             android:label="PostAnswer">
         </activity>
 
         <activity
-            android:name=".CourseActivity"
+            android:name="com.daviddev.salscaching.CourseActivity"
             android:label="PostAnswer">
         </activity>
 
         <activity
-            android:name=".StartActivity"
+            android:name="com.daviddev.salscaching.StartActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.daviddev.projetgocaching_intgration1;
+package com.daviddev.salscaching;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.daviddev.projetgocaching_intgration1.R;
 
 public class ScanActivity extends Activity implements View.OnClickListener {
 

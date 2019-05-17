@@ -3,6 +3,9 @@ package com.daviddev.projetgocaching_intgration1;
 import android.content.Context;
 import android.support.test.rule.ActivityTestRule;
 
+import com.daviddev.salscaching.DataBaseManager;
+import com.daviddev.salscaching.StartActivity;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class DataBaseManagerTest {
     @Rule
-    public ActivityTestRule<StartActivity> mActivityRule = new ActivityTestRule(StartActivity.class);
+    public ActivityTestRule<com.daviddev.salscaching.StartActivity> mActivityRule = new ActivityTestRule(StartActivity.class);
     static Context context;
     private StartActivity StartActivity = null;
 

@@ -10,11 +10,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static com.daviddev.projetgocaching_intgration1.DataBaseManager.KEY_ID;
-import static com.daviddev.projetgocaching_intgration1.DataBaseManager.LATITUDE;
-import static com.daviddev.projetgocaching_intgration1.DataBaseManager.LONGITUDE;
-import static com.daviddev.projetgocaching_intgration1.DataBaseManager.TABLE_NAME;
-import static com.daviddev.projetgocaching_intgration1.DataBaseManager.TABLE_NAME_GEOCACHE;
+import static DataBaseManager.KEY_ID;
+import static DataBaseManager.LATITUDE;
+import static DataBaseManager.LONGITUDE;
+import static DataBaseManager.TABLE_NAME;
+import static DataBaseManager.TABLE_NAME_GEOCACHE;
 import static org.junit.Assert.*;
 
 
