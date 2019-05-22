@@ -25,18 +25,11 @@ public class ImageActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-       // this.overridePendingTransition(R.anim.left_slide_in,R.anim.left_slide_out);
-
         map_button = findViewById(R.id.map_button);
         map_button.setOnClickListener(this);
 
         find_image_button = findViewById(R.id.find_image_button);
         find_image_button.setOnClickListener(this);
-
-        image_list = findViewById(R.id.image_list);
-
-      //  int id = Course.getCurrentGeocacheId();
-        int id2 = Course.getNextGeocacheId();
 
         String path = Geocache.getNextURL();
 
@@ -48,12 +41,6 @@ public class ImageActivity extends Activity implements View.OnClickListener {
             imageView3 = findViewById(R.id.imageView3);
             imageView3.setImageURI(Uri.parse(path));
         }
-
-    /*    int flags[] = {R.drawable.img1};
-
-        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(),  flags);
-        image_list.setAdapter(customAdapter);*/
-
     }
 
     @Override
@@ -62,7 +49,6 @@ public class ImageActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.map_button:
                 intent = new Intent(this, MapsActivity.class);
-              //  this.overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
                 startActivity(intent);
                 break;
             case R.id.find_image_button:

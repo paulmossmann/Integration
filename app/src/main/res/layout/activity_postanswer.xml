@@ -28,14 +28,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="Vous devez maintenant trouver le prochain géocache. Aidez vous de la carte et des photos d'indications"
         android:textAlignment="center"
         android:textSize="24sp"
         app:fontFamily="casual"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

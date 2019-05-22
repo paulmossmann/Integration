@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Projet géocaching - Intégration 1</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">Projet géocaching</string>
+    <string name="title_activity_maps">Projet géocaching</string>
     <string name="this_is_the_end">this is the end</string>
     <string name="ok">Ok !</string>
     <string name="explanationWrite">Enter your text bellow and scan a NFC tag.</string>

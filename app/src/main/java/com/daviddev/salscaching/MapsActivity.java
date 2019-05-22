@@ -30,9 +30,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button find_map_button, maps_image_button;
     public static Activity maps;
     GoogleMap google;
-    int o;
-
-    double lat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,83 +54,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }, 1);
         }
 
-    /*    mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 1, mLocationListener);*/
-
     }
 
-   /* private final LocationListener mLocationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(final Location location) {
-
-            Log.d(">>>>>>>>>>>>>>>>", "latitude" +  location.getLatitude());
-
-            Polyline line = gmap.addPolyline(new PolylineOptions()
-                    .add(new LatLng(location.getLatitude(), location.getLongitude()), new LatLng(lat, longi))
-                    .width(5)
-                    .color(Color.RED));
-
-        }
-
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };*/
-
-    //La méthode onMapReady est appelée lorsque la carte est prête à être utilisée
+    /**
+     * Méthode appelée lorsque la carte est prête à être affichée
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        google = googleMap;
 
-        o = displayMap(Geocache.getNextLatitude(), Geocache.getNextLongitude(), googleMap, Geocache.getNextTitle());
-
-    }
-
-    //null
-    //-91 91    -181 181
-    //Pas d'instance de la database
-    //format, type
-
-    @SuppressLint("MissingPermission")
-    public int displayMap(double latitude, double longitude, GoogleMap gmap, String title){
-
-        gmap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         //Activé la localisation du smartphone
-        gmap.setMyLocationEnabled(true);
+        googleMap.setMyLocationEnabled(true);
 
-        gmap.getUiSettings().setMapToolbarEnabled(false);
-
-       //Création d'un point GPS à partir de la latitude et de la longitude
-        /*La valeur de latitude est comprise entre -90 et 90
-        La valeur de latitude est comprise entre -180 et 180*/
-        if(!(90 > latitude && latitude > -90 && 180 > longitude && longitude > -180)){
-            return -1;
-        }
+        googleMap.getUiSettings().setMapToolbarEnabled(false);
 
         //La valeur de latitude est comprise entre -180 et 180
-       LatLng geocachePoint = new LatLng(latitude ,longitude);
-       //Ajout du point GPS sur la carte
-       gmap.addMarker(new MarkerOptions().position(geocachePoint).title(title));
+        LatLng geocachePoint = new LatLng(Geocache.getNextLatitude() ,Geocache.getNextLongitude());
+        //Ajout du point GPS sur la carte
+        googleMap.addMarker(new MarkerOptions().position(geocachePoint).title(Geocache.getNextTitle()));
 
         //Création d'un niveau de zoom
         float zoomLevel = (float) 18.0;
-        gmap.setMinZoomPreference((float) 16.0);
+        googleMap.setMinZoomPreference((float) 16.0);
         //Centrer la carte sur le point GPS crée et régler le zoom
-        gmap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geocachePoint, zoomLevel));
 
-        return 1;
     }
 
     @Override
