@@ -52,8 +52,13 @@ public class ImageActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.find_image_button:
-                intent = new Intent(this, ScanActivity.class);
-                startActivity(intent);
+                if (GeocacheManager.isNfcEnable(this)){
+                    intent = new Intent(this, ScanActivity.class);
+                    startActivity(intent);
+                    break;
+                }
+                else
+                    Toast.makeText(this, "Vous devez activer NFC sur votre smartphone !", Toast.LENGTH_SHORT).show();
                 break;
         }
 

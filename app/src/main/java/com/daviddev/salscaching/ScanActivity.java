@@ -43,7 +43,6 @@ public class ScanActivity extends Activity implements View.OnClickListener {
             try{
 
                 geocacheId = Integer.parseInt(GeocacheManager.readGeocacheId(intent));
-                Toast.makeText(this, "Lecture d'un tag NFC", Toast.LENGTH_SHORT).show();
 
                 //Si l'id du tag NFC scanné correspond à l'id attendu.
                 if(isExpectedGeocache(geocacheId)){

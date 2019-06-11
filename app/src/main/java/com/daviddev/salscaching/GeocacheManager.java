@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 
 
-import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -15,13 +13,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 
-import android.util.Log;
-
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.IllegalFormatConversionException;
 
 /**
  * Classe pour manager la lecture et l'écriture de tag nfc correspondant à des géocaches
@@ -177,7 +169,7 @@ public class GeocacheManager {
                 //Verification de la possibilité d'écritude du tag
                 if (!ndef.isWritable()) {
                     ndef.close();
-                    throw new TagNotWritable();
+                    throw new TagNotWritableException();
                 }
 
                 //Ecrase le message écrit dans le tag NFC avec le nouveau ndefMessage
@@ -269,8 +261,8 @@ public class GeocacheManager {
     /**
      * Exception levée lorsqu'on tente d'instruire un tag NFC vérouillé en lecture seule.
      */
-    static class TagNotWritable extends Exception {
-        TagNotWritable() {
+    static class TagNotWritableException extends Exception {
+        TagNotWritableException() {
             super("Le tag NFC est en lecture seule.");
         }
     }
